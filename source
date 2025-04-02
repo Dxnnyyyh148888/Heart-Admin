@@ -1,0 +1,139 @@
+local k = Instance.new("ScreenGui")
+k.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+local black = Instance.new("Frame")
+black.Parent = k
+black.Size = UDim2.new(1.5, 0, 1.5, 0)
+black.Position = UDim2.new(-0.25, 0, -0.25, 0)
+black.BackgroundTransparency = 1
+local m = Instance.new("Frame")
+m.Parent = k
+m.Size = UDim2.new(0.05, 0, 2, 0)
+m.Position = UDim2.new(0.45, 0, 1, 0)
+m.BackgroundColor3 = Color3.fromRGB(255,0,128)
+m.ClipsDescendants = true
+local mm = Instance.new("Frame")
+mm.Parent = m
+mm.Size = UDim2.new(1,0,0.3)
+mm.BackgroundColor3 = m.BackgroundColor3
+mm.BorderSizePixel = 0
+mm.Position = UDim2.new(0,0,0.15)
+
+local bg = Instance.new("UIGradient")
+bg.Parent = black
+bg.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.new(1, 0, 1)),
+    ColorSequenceKeypoint.new(1, Color3.new(0, 0, 0))
+})
+bg.Rotation = 90
+local t = Instance.new("TextBox")
+t.Parent = m
+t.Text = ""
+t.TextColor3 = Color3.new(1, 1, 1)
+t.TextSize = 35
+t.Font = Enum.Font.FredokaOne
+t.PlaceholderText = "Command Bar"
+t.Size = UDim2.new(1, 0, 0.8, 0)
+t.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+t.Position = UDim2.new(0, 0, -1, 0)
+local tc = Instance.new("UICorner")
+tc.Parent = t
+tc.CornerRadius = UDim.new(0.2,0)
+local tt = Instance.new("Frame")
+tt.Parent = t
+tt.Size = UDim2.new(1,0,0.15)
+tt.Position = UDim2.new(0,0,0.85)
+tt.BackgroundColor3 = t.BackgroundColor3
+tt.BorderSizePixel = 0
+
+local b = Instance.new("TextButton")
+b.Parent = k
+b.Size = UDim2.new(0, 30, 0, 30)
+b.Position = UDim2.new(0, 550, 0, 50)
+b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)  -- Добавлено
+b.BackgroundTransparency= 0.4
+b.Text = ""
+local bc = Instance.new("UICorner")
+bc.Parent = b
+bc.CornerRadius = UDim.new(1, 0)
+local bb = Instance.new("ImageLabel")
+bb.Parent = b
+bb.BackgroundTransparency = 1
+bb.Size = UDim2.new(0.7,0,0.7)
+bb.Position = UDim2.new(0.15,0,0.15)
+bb.Image = "https://roblox.com/asset/?id=89166635083404"
+local tw = game:GetService("TweenService")
+local quint = TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+local elastic = TweenInfo.new(4, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out)
+local linear = TweenInfo.new(5,Enum.EasingStyle.Linear,Enum.EasingDirection.Out,-1,true)
+local longquint = TweenInfo.new(2, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+local opening = {Position = UDim2.new(0.15, 0, 0.75, 0), Size = UDim2.new(0.7, 0, 0.15, 0)}
+local mc = Instance.new("UICorner")
+mc.Parent = m
+mc.CornerRadius = UDim.new(1, 0)
+local open = tw:Create(m, quint, opening)
+local bgo = tw:Create(black, quint, {BackgroundTransparency = 0.5})
+local bgc = tw:Create(black, quint, {BackgroundTransparency = 1})
+local open2 = tw:Create(mc, elastic, {CornerRadius = UDim.new(0.2, 0)})
+local open3 = tw:Create(b, quint, {Position = UDim2.new(0, 550, -1, 0)})
+local open4 = tw:Create(t, quint, {Position = UDim2.new(0, 0, 0, 0)})
+b.MouseButton1Down:Connect(function()
+    b.BackgroundTransparency = 0.4
+    bb.ImageTransparency = 0
+    bgo:Play()
+    open:Play()
+    open2:Play()
+    open3:Play()
+    wait(0.25)
+    open4:Play()
+    wait(0.25)
+    t:CaptureFocus()
+end)
+
+t.FocusLost:Connect(function()
+    bgc:Play()
+    bb.Size = UDim2.new(1,0,1)
+    bb.Position = UDim2.new(0,0,0)
+    bb.Rotation = -400
+    local jj = tw:Create(t,quint,{Position = UDim2.new(0,0,-1)})
+    local close = tw:Create(m, quint, {Position = UDim2.new(0.475, 0, 1, 0)})
+    local close2 = tw:Create(m, quint, {Size = UDim2.new(0.05, 0, 2, 0)})
+    local back = tw:Create(b, quint, {Position = UDim2.new(0, 550, 0, 50)})
+    local unsize = tw:Create(bb,longquint,{Size = UDim2.new(0.7,0,0.7)})
+    local unpos = tw:Create(bb,longquint,{Position = UDim2.new(0.15,0,0.15)})
+    local mcc = tw:Create(mc,quint,{CornerRadius = UDim.new(0,0)})
+    local br = tw:Create(bb,quint,{Rotation = 0})
+    close:Play()
+    close2:Play()
+    back:Play()
+    jj:Play()
+    unsize:Play()
+    unpos:Play()
+    mcc:Play()
+    br:Play()
+    b.BackgroundTransparency = 0.4
+    bb.ImageTransparency = 0
+    if t.Text == "fly" or t.Text == "Fly" then
+        loadstring(game:HttpGet("https://pastebin.com/raw/ciiLHyLZ"))()
+    elseif t.Text == "close" or t.Text == "Close" then
+        k:Destroy()
+    elseif t.Text == "Sit" or t.Text == "sit" then
+        game.Players.LocalPlayer.Character.Humanoid.Sit = true
+    elseif t.Text == "Jump" or t.Text == "jump" then
+        game.Players.LocalPlayer.Character.Humanoid.Jump = true
+    elseif t.Text:lower():sub(1, 5) == "speed" or t.Text:lower():sub(1, 5) == "Speed"  then
+        local speed = tonumber(t.Text:sub(7))
+        if speed then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+        end
+    end
+    wait(0.1)
+    t.Text = ""
+    wait(4.9)
+    local transformer = {BackgroundTransparency = 0.7}
+    local transformation = tw:Create(b,quint,transformer)
+    local transformation2 = tw:Create(bb,quint,{ImageTransparency = 0.5})
+    transformation:Play()
+    transformation2:Play()
+end)
+local bgr = tw:Create(bg,linear,{Rotation = 360})
+bgr:Play()
