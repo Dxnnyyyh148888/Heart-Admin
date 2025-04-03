@@ -151,7 +151,7 @@ t.FocusLost:Connect(function()
             end
         end
 
-    elseif t.Text:lower() == "inview" then
+    elseif t.Text:lower() == "unview" then
         game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
 
     elseif t.Text:lower() == "noclip" then
