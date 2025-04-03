@@ -31,7 +31,7 @@ t.Text = ""
 t.TextColor3 = Color3.new(1, 1, 1)
 t.TextSize = 35
 t.Font = Enum.Font.FredokaOne
-t.PlaceholderText = "Command Bar"
+t.PlaceholderText = "HeartAdmin:Command Bar"
 t.Size = UDim2.new(1, 0, 0.8, 0)
 t.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
 t.Position = UDim2.new(0, 0, -1, 0)
@@ -116,6 +116,8 @@ t.FocusLost:Connect(function()
         loadstring(game:HttpGet("https://pastebin.com/raw/ciiLHyLZ"))()
     elseif t.Text == "close" or t.Text == "Close" then
         k:Destroy()
+    elseif t.Text == "Fling" or t.Text == "fling" then
+        loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Fling-gui-troll-17597"))()
     elseif t.Text == "Sit" or t.Text == "sit" then
         game.Players.LocalPlayer.Character.Humanoid.Sit = true
     elseif t.Text == "Jump" or t.Text == "jump" then
