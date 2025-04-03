@@ -125,6 +125,10 @@ t.FocusLost:Connect(function()
         if speed then
             game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
         end
+    elseif t.Text == "iy" or t.Text == "Iy" then
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    elseif t.Text == "cmds" or t.Text == "Cmds" or t.Text == "Commands" or t.Text == "commands" then
+        loadstring(game:HttpGet("https://pastebin.com/raw/CK0aagjJ"))()
     end
     wait(0.1)
     t.Text = ""
