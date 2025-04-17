@@ -31,7 +31,7 @@ t.Text = ""
 t.TextColor3 = Color3.new(1, 1, 1)
 t.TextSize = 35
 t.Font = Enum.Font.FredokaOne
-t.PlaceholderText = "HeartAdmin:Command Bar"
+t.PlaceholderText = "COMMAND BAR"
 t.Size = UDim2.new(1, 0, 0.8, 0)
 t.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
 t.Position = UDim2.new(0, 0, -1, 0)
@@ -49,7 +49,7 @@ local b = Instance.new("TextButton")
 b.Parent = k
 b.Size = UDim2.new(0, 30, 0, 30)
 b.Position = UDim2.new(0, 550, 0, 50)
-b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)  -- Добавлено
+b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 b.BackgroundTransparency= 0.4
 b.Text = ""
 local bc = Instance.new("UICorner")
@@ -65,11 +65,44 @@ local tw = game:GetService("TweenService")
 local quint = TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
 local elastic = TweenInfo.new(4, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out)
 local linear = TweenInfo.new(5,Enum.EasingStyle.Linear,Enum.EasingDirection.Out,-1,true)
-local longquint = TweenInfo.new(2, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+local longquint = TweenInfo.new(5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
 local opening = {Position = UDim2.new(0.15, 0, 0.75, 0), Size = UDim2.new(0.7, 0, 0, 80)}
+
+-- notif sys
+local nl = Instance.new("TextLabel")
+nl.Parent = k
+nl.Size = UDim2.new(0,350,0,30)
+nl.Position = UDim2.new(0,400,-1,0)
+nl.BackgroundColor3 = Color3.new(1,1,1)
+nl.BackgroundTransparency = 0.9
+nl.TextColor3 = Color3.fromRGB(255,0,128)
+nl.Font = t.Font
+nl.TextScaled = true
+local nlc = Instance.new("UICorner")
+nlc.Parent = nl
+nlc.CornerRadius = UDim.new(1,0)
+local nopen = tw:Create(nl,quint,{Position = UDim2.new(0,400,0,0)})
+local nclose = tw:Create(nl,quint,{Position = UDim2.new(0,400,-1,0)})
+local function notify(Text)
+    nl.Text = Text
+    nopen:Play()
+    wait(5)
+    nclose:Play()
+    wait(1)
+    nl.Text = ""
+end
 local mc = Instance.new("UICorner")
 mc.Parent = m
 mc.CornerRadius = UDim.new(1, 0)
+local blur = Instance.new("BlurEffect")
+blur.Parent = game.Lighting
+blur.Size = 0
+local svet = game.Lighting
+local current = svet.Brightness
+local blurring = tw:Create(blur,longquint,{Size = 50})
+local noblurring = tw:Create(blur,quint,{Size = 0})
+local svetet = tw:Create(svet,longquint,{Brightness = current + 4})
+local nosvetet = tw:Create(svet,quint,{Brightness = 2})
 local open = tw:Create(m, quint, opening)
 local bgo = tw:Create(black, quint, {BackgroundTransparency = 0.5})
 local bgc = tw:Create(black, quint, {BackgroundTransparency = 1})
@@ -77,6 +110,8 @@ local open2 = tw:Create(mc, elastic, {CornerRadius = UDim.new(0.2, 0)})
 local open3 = tw:Create(b, quint, {Position = UDim2.new(0, 550, -1, 0)})
 local open4 = tw:Create(t, quint, {Position = UDim2.new(0, 0, 0, 0)})
 b.MouseButton1Down:Connect(function()
+    blurring:Play()
+    svetet:Play()
     b.BackgroundTransparency = 0.4
     bb.ImageTransparency = 0
     bgo:Play()
@@ -90,6 +125,9 @@ b.MouseButton1Down:Connect(function()
 end)
 
 t.FocusLost:Connect(function()
+    local current = svet.Brightness
+    noblurring:Play()
+    nosvetet:Play()
     bgc:Play()
     bb.Size = UDim2.new(1,0,1)
     bb.Position = UDim2.new(0,0,0)
@@ -128,8 +166,10 @@ t.FocusLost:Connect(function()
             game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
         end
     elseif t.Text == "iy" or t.Text == "Iy" then
+        notify("Its Loadstring so wait")
         loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
     elseif t.Text == "cmds" or t.Text == "Cmds" or t.Text == "Commands" or t.Text == "commands" then
+        notify("its loadstring... wait.")
         loadstring(game:HttpGet("https://pastebin.com/raw/CK0aagjJ"))()
     elseif t.Text:lower():sub(1, 4) == "goto" then
         local player = game.Players.LocalPlayer
@@ -172,9 +212,15 @@ t.FocusLost:Connect(function()
                 end
             end)
         end
-
     elseif t.Text:lower() == "unnoclip" then
         _G.Noclip = false
+    elseif t.Text == "nigga" or t.Text == "Nigga" then
+        notify("Dont be bad.")
+    elseif t.Text == "hi" or t.Text == "Hi" or t.Text == "hello" or t.Text == "Hello" then
+        notify("hi, Type 'cmds' or 'commands' to open command list")
+    elseif t.Text == "reset" or t.Text == "Reset" or t.Text == "Die" or t.Text == "die" or t.Text == "Kill" or t.Text == "kill" then
+        game.Players.LocalPlayer.Character.Humanoid.Health = 0
+        notify("killed")
     end
     t.Text = ""
     wait(4.9)
@@ -186,3 +232,8 @@ t.FocusLost:Connect(function()
 end)
 local bgr = tw:Create(bg,linear,{Rotation = 360})
 bgr:Play()
+local currentTime = os.date("*t")
+local hour = currentTime.hour
+if hour >= 2 and hour < 5 then
+    notify("need to sleep buddy.. (its " .. hour .. ":00)")
+end
