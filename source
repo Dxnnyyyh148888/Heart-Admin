@@ -157,6 +157,8 @@ t.FocusLost:Connect(function()
         k:Destroy()
     elseif t.Text == "Fling" or t.Text == "fling" then
         loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Fling-gui-troll-17597"))()
+    elseif t.Text == "restart" or t.Text == "Restart" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/source"))()
     elseif t.Text == "Sit" or t.Text == "sit" then
         game.Players.LocalPlayer.Character.Humanoid.Sit = true
     elseif t.Text == "Jump" or t.Text == "jump" then
