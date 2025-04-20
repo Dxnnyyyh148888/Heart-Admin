@@ -62,6 +62,7 @@ bb.BackgroundTransparency = 1
 bb.Size = UDim2.new(0.7,0,0.7)
 bb.Position = UDim2.new(0.15,0,0.15)
 bb.Image = "https://roblox.com/asset/?id=89166635083404"
+
 local tw = game:GetService("TweenService")
 local quint = TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
 local elastic = TweenInfo.new(4, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out)
@@ -69,6 +70,94 @@ local linear = TweenInfo.new(5,Enum.EasingStyle.Linear,Enum.EasingDirection.Out,
 local longquint = TweenInfo.new(5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
 local opening = {Position = UDim2.new(0.15, 0, 0.75, 0), Size = UDim2.new(0.7, 0, 0, 80)}
 
+-- cmds
+
+local cff = Instance.new("Frame", k)
+cff.Size = UDim2.new(0,150,0,200)
+cff.Position = UDim2.new(0, 0, 0.1, 0)
+cff.BackgroundColor3 = Color3.new(1, 1, 1)
+cff.BackgroundTransparency = 0.9
+cff.Active = true
+cff.Visible = false
+cff.Draggable = true
+local sfe = Instance.new("TextButton", cff)
+sfe.Size = UDim2.new(0.1, 0, 0.1, 0)
+sfe.BackgroundTransparency = 1
+sfe.Text = "X"
+sfe.Font = Enum.Font.SourceSansLight
+sfe.TextScaled = true
+sfe.TextColor3 = Color3.new(1, 1, 1)
+sfe.MouseButton1Down:Connect(function()
+	cff.Visible = false
+end)
+local cfl = Instance.new("TextLabel", cff)
+cfl.Size = UDim2.new(1, 0, 0.1, 0)
+cfl.BackgroundTransparency = 1
+cfl.Text = "COMMANDS"
+cfl.TextScaled = true
+cfl.TextColor3 = Color3.new(200, 200, 200)
+cfl.Font = Enum.Font.SourceSans
+local cfls = Instance.new("UIStroke", cfl)
+cfls.Color = Color3.new(1, 1, 1)
+local cfsc = Instance.new("ScrollingFrame", cff)
+cfsc.Size = UDim2.new(1, 0,0.9)
+cfsc.Position = UDim2.new(0, 0, 0.1, 0)
+cfsc.BackgroundTransparency = 1
+cfsc.CanvasSize = UDim2.new(0, 0, 100, 0)
+cfsc.ScrollBarThickness = 0
+local sfscl = Instance.new("TextLabel", cfsc)
+sfscl.Size = UDim2.new(1,0,1)
+sfscl.BackgroundTransparency = 1
+sfscl.TextScaled = true
+sfscl.TextXAlignment = Enum.TextXAlignment.Left
+sfscl.TextYAlignment = Enum.TextYAlignment.Top
+sfscl.Font = Enum.Font.SourceSans
+sfscl.TextColor3 = Color3.fromRGB(255, 0, 128)
+sfscl.Text = [[=HEART ADMIN
+menu
+change theme
+chill
+info 
+gamehub/gh
+close
+restart
+
+=BASIC
+fly(GUI)
+noclip
+unnoclip
+view
+unview
+goto
+speed[nubmer]
+fling(GUI)
+jump
+sit
+gotoall
+
+=fun and troll
+bang(GUI/CONTROLLABLE)
+jerk
+black(client)
+disco(client)
+blacksc
+unblacksc
+whitesc
+unwhitesc
+
+=developer tools
+dex/explorer
+rspy/remotespy
+f3x
+btools
+
+=body
+noleg
+nohead/headless
+korblox
+creeper
+dissapear
+]]
 -- notif sys
 local nl = Instance.new("TextLabel")
 nl.Parent = k
@@ -157,8 +246,6 @@ t.FocusLost:Connect(function()
         k:Destroy()
     elseif t.Text == "Fling" or t.Text == "fling" then
         loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Fling-gui-troll-17597"))()
-    elseif t.Text == "restart" or t.Text == "Restart" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/source"))()
     elseif t.Text == "Sit" or t.Text == "sit" then
         game.Players.LocalPlayer.Character.Humanoid.Sit = true
     elseif t.Text == "Jump" or t.Text == "jump" then
@@ -172,8 +259,7 @@ t.FocusLost:Connect(function()
         notify("Its Loadstring so wait")
         loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
     elseif t.Text == "cmds" or t.Text == "Cmds" or t.Text == "Commands" or t.Text == "commands" then
-        notify("its loadstring... wait.")
-        loadstring(game:HttpGet("https://pastebin.com/raw/CK0aagjJ"))()
+        cff.Visible = true
     elseif t.Text:lower():sub(1, 4) == "goto" then
         local player = game.Players.LocalPlayer
         local targetName = t.Text:sub(6):lower()
@@ -243,10 +329,12 @@ if isfile("hadarkwhite.txt") then
 	tt.BackgroundColor3 = t.BackgroundColor3
 	m.BackgroundColor3 = Color3.new(1,1,1)
 	mm.BackgroundColor3 = Color3.new(1,1,1)
-	nl.TextColor3 = Color3.new(0, 0, 0)
+	nl.TextColor3 = Color3.fromRGB(31, 31, 31)
 	b.BackgroundColor3 = Color3.new(0, 0, 0)
 	print("loaded hadarkwhite")
-	b.Visible = true	
+	b.Visible = true
+	cff.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+	sfscl.TextColor3 = Color3.new(1, 1, 1)
 	local currentTime = os.date("*t")
 	local hour = currentTime.hour
 	if hour >= 2 and hour < 5 then
@@ -264,9 +352,9 @@ if isfile("hadarkred.txt") then
 end
 if not isfile("hadarkwhite.txt") and not isfile("hadarkred.txt") then
 	notify("hi")
-	wait(1)
+	notify("i see you first time here, choose your theme:")
 	local sfr = Instance.new("Frame", k)
-	sfr.Size = UDim2.new(0, 200, 0, 400)
+	sfr.Size = UDim2.new(0,100,0,100)
 	sfr.Position = UDim2.new(0.3, 0, 0.3, 0)
 	sfr.BackgroundColor3 = Color3.new(1, 1, 1)
 	sfr.BackgroundTransparency = 0.9
@@ -301,6 +389,8 @@ if not isfile("hadarkwhite.txt") and not isfile("hadarkred.txt") then
 		end
 	end)
 	sb2.MouseButton1Down:Connect(function()
+		cff.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+    	sfscl.TextColor3 = Color3.fromRGB(255,255,255)
 		t.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
     	tt.BackgroundColor3 = t.BackgroundColor3
 		bg.Color = ColorSequence.new({
@@ -324,7 +414,6 @@ if not isfile("hadarkwhite.txt") and not isfile("hadarkred.txt") then
     		notify("need to sleep buddy.. (its " .. hour .. ":00)")
 		end
 	end)
-	notify("i see youre first time here, choose your theme:")
 end
 local bgr = tw:Create(bg,linear,{Rotation = 360})
 bgr:Play()
