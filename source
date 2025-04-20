@@ -33,7 +33,7 @@ t.TextSize = 35
 t.Font = Enum.Font.FredokaOne
 t.PlaceholderText = "COMMAND BAR"
 t.Size = UDim2.new(1, 0, 0.8, 0)
-t.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+t.BackgroundColor3 = Color3.fromRGB(150,150,150)
 t.Position = UDim2.new(0, 0, -1, 0)
 local tc = Instance.new("UICorner")
 tc.Parent = t
@@ -52,6 +52,7 @@ b.Position = UDim2.new(0, 550, 0, 50)
 b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 b.BackgroundTransparency= 0.4
 b.Text = ""
+b.Visible = false
 local bc = Instance.new("UICorner")
 bc.Parent = b
 bc.CornerRadius = UDim.new(1, 0)
@@ -151,7 +152,7 @@ t.FocusLost:Connect(function()
     b.BackgroundTransparency = 0.4
     bb.ImageTransparency = 0
     if t.Text == "fly" or t.Text == "Fly" then
-        loadstring(game:HttpGet("https://pastebin.com/raw/ciiLHyLZ"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/Flight"))()
     elseif t.Text == "close" or t.Text == "Close" then
         k:Destroy()
     elseif t.Text == "Fling" or t.Text == "fling" then
@@ -230,10 +231,98 @@ t.FocusLost:Connect(function()
     transformation:Play()
     transformation2:Play()
 end)
+
+if isfile("hadarkwhite.txt") then
+	bg.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.new(1,1,1)),
+        ColorSequenceKeypoint.new(1, Color3.new(0, 0, 0))
+    })
+	t.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+	tt.BackgroundColor3 = t.BackgroundColor3
+	m.BackgroundColor3 = Color3.new(1,1,1)
+	mm.BackgroundColor3 = Color3.new(1,1,1)
+	nl.TextColor3 = Color3.new(0, 0, 0)
+	b.BackgroundColor3 = Color3.new(0, 0, 0)
+	print("loaded hadarkwhite")
+	b.Visible = true	
+	local currentTime = os.date("*t")
+	local hour = currentTime.hour
+	if hour >= 2 and hour < 5 then
+    	notify("need to sleep buddy.. (its " .. hour .. ":00)")
+	end
+end
+if isfile("hadarkred.txt") then
+    print("loaded hadarkred")
+	b.Visible = true
+	local currentTime = os.date("*t")
+	local hour = currentTime.hour
+	if hour >= 2 and hour < 5 then
+		notify("need to sleep buddy.. (its " .. hour .. ":00)")
+	end
+end
+if not isfile("hadarkwhite.txt") and not isfile("hadarkred.txt") then
+	notify("hi")
+	wait(1)
+	local sfr = Instance.new("Frame", k)
+	sfr.Size = UDim2.new(0, 200, 0, 400)
+	sfr.Position = UDim2.new(0.3, 0, 0.3, 0)
+	sfr.BackgroundColor3 = Color3.new(1, 1, 1)
+	sfr.BackgroundTransparency = 0.9
+	local sb = Instance.new("TextButton", sfr)
+	sb.Size = UDim2.new(0.5, 0,1,0)
+	sb.Text = "White Red"
+	sb.Font = Enum.Font.Highway
+	sb.TextScaled = true
+	sb.TextColor3 = Color3.fromRGB(255, 0, 128)
+	sb.BackgroundColor3 = Color3.new(1, 1, 1)
+	local sbc = Instance.new("UICorner", sb)
+	local sb2 = Instance.new("TextButton", sfr)
+	sb2.Size = sb.Size
+	sb2.Position = UDim2.new(0.5,0,0)
+	sb2.BackgroundColor3 = Color3.new(0, 0, 0)
+	sb2.Text = "Dark White"
+	sb2.Font = sb.Font
+	sb2.TextColor3 = Color3.new(1, 1, 1)
+	sb2.TextScaled = true
+	local sbc2 = Instance.new("UICorner", sb2)
+	sb.MouseButton1Down:Connect(function()
+	    writefile("hadarkred.txt", "This is for HEART ADMIN")
+		sfr:Destroy()
+		sb:Destroy()
+		sb2:Destroy()
+		b.Visible = true
+		notify("nice, have a good day!")
+		local currentTime = os.date("*t")
+		local hour = currentTime.hour
+		if hour >= 2 and hour < 5 then
+    		notify("need to sleep buddy.. (its " .. hour .. ":00)")
+		end
+	end)
+	sb2.MouseButton1Down:Connect(function()
+		t.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+    	tt.BackgroundColor3 = t.BackgroundColor3
+		bg.Color = ColorSequence.new({
+       		ColorSequenceKeypoint.new(0, Color3.new(1,1,1)),
+      	    ColorSequenceKeypoint.new(1, Color3.new(0, 0, 0))
+    	})
+		m.BackgroundColor3 = Color3.new(1,1,1)
+		mm.BackgroundColor3 = Color3.new(1,1,1)
+		nl.TextColor3 = Color3.new(0, 0, 0)
+		b.BackgroundColor3 = Color3.new(0, 0, 0)
+		print("loaded hadarkwhite")
+		writefile("hadarkwhite.txt", "This is for HEART ADMIN")
+		sfr:Destroy()
+		sb:Destroy()
+		sb2:Destroy()
+		b.Visible = true
+		notify("Nice, have a good day!")
+		local currentTime = os.date("*t")
+		local hour = currentTime.hour
+		if hour >= 2 and hour < 5 then
+    		notify("need to sleep buddy.. (its " .. hour .. ":00)")
+		end
+	end)
+	notify("i see youre first time here, choose your theme:")
+end
 local bgr = tw:Create(bg,linear,{Rotation = 360})
 bgr:Play()
-local currentTime = os.date("*t")
-local hour = currentTime.hour
-if hour >= 2 and hour < 5 then
-    notify("need to sleep buddy.. (its " .. hour .. ":00)")
-end
