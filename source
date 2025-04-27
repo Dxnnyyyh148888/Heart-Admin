@@ -158,6 +158,65 @@ korblox
 creeper
 dissapear
 ]]
+-- menu
+local menu = Instance.new("Frame", k)
+menu.Size = UDim2.new(0,300,0,400)
+menu.Position = UDim2.new(0.35, 0, 0, 0)
+menu.Active = true
+menu.Draggable = true
+menu.Visible = false
+menu.BackgroundTransparency = 1
+menu.ClipsDescendants = true
+local main = Instance.new("Frame")
+main.Parent = menu
+main.Size = UDim2.new(1, 0, 0.85, 0)
+main.Position = UDim2.new(0, 0, 0.15, 0)
+main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+main.BorderSizePixel = 0
+main.BackgroundTransparency = 0.05
+local header = Instance.new("TextLabel", menu)
+header.Size = UDim2.new(1, 0, 0.15, 0)
+header.BorderSizePixel = 0
+header.BackgroundColor3 = Color3.fromRGB(255, 0, 128)
+header.TextXAlignment = Enum.TextXAlignment.Left
+header.Font = Enum.Font.Highway
+header.TextColor3 = Color3.fromRGB(255, 255, 255)
+header.TextScaled = true
+header.Text = "HEART"
+local mb = Instance.new("TextButton")
+mb.Parent = header
+mb.Size = UDim2.new(0.15, 0, 0.9, 0)
+mb.Position = UDim2.new(0.84, 0, 0.05)
+mb.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+mb.BorderSizePixel = 0
+mb.BackgroundTransparency = 0.5
+mb.Text = "X"
+mb.TextColor3 = Color3.fromRGB(255, 255, 255)
+mb.Font = Enum.Font.SciFi
+mb.TextScaled = true
+local mbb = Instance.new("TextButton")
+mbb.Parent = header
+mbb.Size = mb.Size
+mbb.BorderSizePixel = 0
+mbb.TextColor3 = Color3.new(1, 1, 1)
+mbb.Position = UDim2.new(0.68,0,0.05)
+mbb.BackgroundColor3 = Color3.new(0,0,0)
+mbb.Font = mb.Font
+mbb.BackgroundTransparency = 0.5
+mbb.Text = "-"
+mbb.TextScaled = true
+local op = tw:Create(main,quint,{Position = UDim2.new(0, 0, 0.15, 0)})
+local cl = tw:Create(main,quint,{Position = UDim2.new(0, 0, -1, 0)})
+mbb.MouseButton1Click:Connect(function()
+	if main.Visible == true then
+		cl:Play()
+		wait(1)
+		main.Visible = false
+	else
+		op:Play()
+		main.Visible = true
+	end
+end)
 -- notif sys
 local nl = Instance.new("TextLabel")
 nl.Parent = k
@@ -310,6 +369,8 @@ t.FocusLost:Connect(function()
     elseif t.Text == "reset" or t.Text == "Reset" or t.Text == "Die" or t.Text == "die" or t.Text == "Kill" or t.Text == "kill" then
         game.Players.LocalPlayer.Character.Humanoid.Health = 0
         notify("killed")
+    elseif t.Text == "m" or t.Text == "menu" or t.Text == "Menu" then
+        menu.Visible = true
     end
     t.Text = ""
     wait(4.9)
@@ -325,6 +386,9 @@ if isfile("hadarkwhite.txt") then
         ColorSequenceKeypoint.new(0, Color3.new(1,1,1)),
         ColorSequenceKeypoint.new(1, Color3.new(0, 0, 0))
     })
+        main.BackgroundColor3 = Color3.fromRGB(31,31,31)
+	header.BackgroundColor3 = Color3.fromRGB(150,150,150)
+        header.TextColor3 = Color3.new(1,1,1)
 	t.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
 	tt.BackgroundColor3 = t.BackgroundColor3
 	m.BackgroundColor3 = Color3.new(1,1,1)
@@ -398,6 +462,9 @@ if not isfile("hadarkwhite.txt") and not isfile("hadarkred.txt") then
       	    ColorSequenceKeypoint.new(1, Color3.new(0, 0, 0))
     	})
 		m.BackgroundColor3 = Color3.new(1,1,1)
+       		main.BackgroundColor3 = Color3.fromRGB(31,31,31)
+		header.BackgroundColor3 = Color3.fromRGB(150,150,150)
+        	header.TextColor3 = Color3.new(1,1,1)
 		mm.BackgroundColor3 = Color3.new(1,1,1)
 		nl.TextColor3 = Color3.new(0, 0, 0)
 		b.BackgroundColor3 = Color3.new(0, 0, 0)
