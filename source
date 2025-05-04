@@ -124,8 +124,8 @@ C = CLIENT, VISUAL
 menu/m(G)
 change theme
 chill
-info 
-gamehub/gh(LS)(G)
+info(G)(WIP)
+gamehub/gh(LS)(G)(WIP)
 close
 restart(LS)
 
@@ -137,14 +137,14 @@ view
 unview
 goto
 speed[nubmer]
-fling(G)(LS)
+fling(G)(LS)(CC)
 jump
 sit
 ESP
-gotoall
+gotoall(WIP)
 
 =fun and troll
-bang(GUI/CONTROLLABLE)
+bang(LS)(G)
 jerk(LS)
 black(C)
 disco(C)
@@ -164,7 +164,7 @@ noleg(C)(WIP)
 nohead/headless(C)(WIP)
 korblox(C)(WIP)
 creeper(C)(WIP)
-dissapear(C)(WIP)
+dissapear(C)(CC)(WIP)
 ]]
 -- menu
 local menu = Instance.new("Frame", k)
@@ -296,7 +296,7 @@ local nclose = tw:Create(nl,quint,{Position = UDim2.new(0,400,-1,0)})
 local function notify(Text)
     nl.Text = Text
     nopen:Play()
-    wait(5)
+    wait(2.5)
     nclose:Play()
     wait(1)
     nl.Text = ""
@@ -444,6 +444,8 @@ t.FocusLost:Connect(function()
         bgc.Completed:Wait()
         bgo:Play()
         blurring:Play()
+    elseif t.Text:lower() == "dex" or t.Text:lower() == "explorer" then
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/infyiff/backup/main/dex.lua'))()
     elseif t.Text:lower() == "restart" then
         k:Destroy()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/source"))()
