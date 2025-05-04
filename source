@@ -208,15 +208,15 @@ mbb.Text = "-"
 mbb.TextScaled = true
 local op = tw:Create(main,quint,{Position = UDim2.new(0, 0, 0.15, 0)})
 local cl = tw:Create(main,quint,{Position = UDim2.new(0, 0, -1, 0)})
+local mo = true
 mbb.MouseButton1Click:Connect(function()
-	if main.Visible == true then
-		cl:Play()
-		wait(1)
-		main.Visible = false
-	else
-		op:Play()
-		main.Visible = true
-	end
+    if mo == true then
+        cl:Play()
+        mo = false
+    elseif mo == false then
+        op:Play()
+        mo = true
+    end
 end)
 -- esp
 local Players = game:GetService("Players")
@@ -433,6 +433,8 @@ t.FocusLost:Connect(function()
         bgc.Completed:Wait()
         bgo:Play()
         blurring:Play()
+    elseif t.Text:lower() == "restart" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/source"))()
     end
     t.Text = ""
     wait(4.9)
