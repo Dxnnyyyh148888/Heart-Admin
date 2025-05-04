@@ -133,6 +133,7 @@ speed[nubmer]
 fling(GUI)
 jump
 sit
+Esp("esp"=X "ESP"= ✓)
 gotoall
 
 =fun and troll
@@ -217,6 +218,59 @@ mbb.MouseButton1Click:Connect(function()
 		main.Visible = true
 	end
 end)
+-- esp
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+
+local espEnabled = false
+local espParts = {}
+
+local function createESP(target)
+	local box = Instance.new("BoxHandleAdornment")
+	box.Name = "ESPBox"
+	box.Adornee = target.Character and target.Character:FindFirstChild("HumanoidRootPart")
+	box.AlwaysOnTop = true
+	box.ZIndex = 10
+	box.Size = Vector3.new(3, 5, 1)
+	box.Transparency = 1
+	box.Color3 = Color3.new(0, 0, 0)
+	box.Parent = target.Character
+	espParts[target] = box
+end
+
+local function updateESP()
+	for player, box in pairs(espParts) do
+		if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+			box.Adornee = player.Character.HumanoidRootPart
+		end
+	end
+end
+
+local function toggleESP(state)
+	espEnabled = state
+	for player, box in pairs(espParts) do
+		if box then
+			tw:Create(box, longquint, {Transparency = state and 0.8 or 1}):Play()
+		end
+	end
+end
+
+task.spawn(function()
+	while true do
+		if espEnabled then
+			for _, player in pairs(Players:GetPlayers()) do
+				if player ~= LocalPlayer and not espParts[player] and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+					createESP(player)
+				end
+			end
+			updateESP()
+		end
+		task.wait(5)
+	end
+end)
+
+_G.esp = toggleESP
 -- notif sys
 local nl = Instance.new("TextLabel")
 nl.Parent = k
@@ -309,6 +363,10 @@ t.FocusLost:Connect(function()
         game.Players.LocalPlayer.Character.Humanoid.Sit = true
     elseif t.Text == "Jump" or t.Text == "jump" then
         game.Players.LocalPlayer.Character.Humanoid.Jump = true
+    elseif t.Text:lower() == "esp" then
+        _G.esp(true)
+    elseif t.Text:lower() == "unesp"then
+        _G.esp(false)
     elseif t.Text:lower():sub(1, 5) == "speed" or t.Text:lower():sub(1, 5) == "Speed"  then
         local speed = tonumber(t.Text:sub(7))
         if speed then
@@ -371,6 +429,10 @@ t.FocusLost:Connect(function()
         notify("killed")
     elseif t.Text == "m" or t.Text == "menu" or t.Text == "Menu" then
         menu.Visible = true
+    elseif t.Text == "chill" or t.Text == "Chill" then
+        bgc.Completed:Wait()
+        bgo:Play()
+        blurring:Play()
     end
     t.Text = ""
     wait(4.9)
