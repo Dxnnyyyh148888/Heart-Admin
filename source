@@ -1,3 +1,4 @@
+local loaded = false
 local k = Instance.new("ScreenGui")
 k.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 local black = Instance.new("Frame")
@@ -113,51 +114,57 @@ sfscl.TextXAlignment = Enum.TextXAlignment.Left
 sfscl.TextYAlignment = Enum.TextYAlignment.Top
 sfscl.Font = Enum.Font.SourceSans
 sfscl.TextColor3 = Color3.fromRGB(255, 0, 128)
-sfscl.Text = [[=HEART ADMIN
-menu
+sfscl.Text = [[WIP = WORK IN PROCESS
+CC = CAN CRASH
+CL = CAN LAG
+G = GUI
+LS = LOADSTRING
+C = CLIENT, VISUAL
+=HEART ADMIN
+menu/m(G)
 change theme
 chill
 info 
-gamehub/gh
+gamehub/gh(LS)(G)
 close
-restart
+restart(LS)
 
 =BASIC
-fly(GUI)
+fly(G)(LS)
 noclip
 unnoclip
 view
 unview
 goto
 speed[nubmer]
-fling(GUI)
+fling(G)(LS)
 jump
 sit
-Esp("esp"=X "ESP"= ✓)
+ESP
 gotoall
 
 =fun and troll
 bang(GUI/CONTROLLABLE)
-jerk
-black(client)
-disco(client)
-blacksc
+jerk(LS)
+black(C)
+disco(C)
+blacksc(C)
 unblacksc
-whitesc
+whitesc(C)
 unwhitesc
 
 =developer tools
-dex/explorer
-rspy/remotespy
-f3x
-btools
+dex/explorer(LS)(G)
+rspy/remotespy(LS)(G)
+f3x(LS)
+btools(LS)
 
 =body
-noleg
-nohead/headless
-korblox
-creeper
-dissapear
+noleg(C)(WIP)
+nohead/headless(C)(WIP)
+korblox(C)(WIP)
+creeper(C)(WIP)
+dissapear(C)(WIP)
 ]]
 -- menu
 local menu = Instance.new("Frame", k)
@@ -326,7 +333,6 @@ b.MouseButton1Down:Connect(function()
     wait(0.25)
     t:CaptureFocus()
 end)
-
 t.FocusLost:Connect(function()
     local current = svet.Brightness
     noblurring:Play()
@@ -364,7 +370,12 @@ t.FocusLost:Connect(function()
     elseif t.Text == "Jump" or t.Text == "jump" then
         game.Players.LocalPlayer.Character.Humanoid.Jump = true
     elseif t.Text:lower() == "esp" then
-        _G.esp(true)
+        if loaded == false then
+            loaded = true
+            notify("Loaded, try again")
+        elseif loaded == true then
+            _G.esp(true)
+        end
     elseif t.Text:lower() == "unesp"then
         _G.esp(false)
     elseif t.Text:lower():sub(1, 5) == "speed" or t.Text:lower():sub(1, 5) == "Speed"  then
@@ -434,6 +445,7 @@ t.FocusLost:Connect(function()
         bgo:Play()
         blurring:Play()
     elseif t.Text:lower() == "restart" then
+        k:Destroy()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/source"))()
     end
     t.Text = ""
