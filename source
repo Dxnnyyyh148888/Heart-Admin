@@ -23,7 +23,7 @@ local bg = Instance.new("UIGradient")
 bg.Parent = black
 bg.Color = ColorSequence.new({
     ColorSequenceKeypoint.new(0, Color3.fromRGB(255,0,128)),
-    ColorSequenceKeypoint.new(1, Color3.new(0, 0, 0))
+    ColorSequenceKeypoint.new(1, Color3.new(1,1,1))
 })
 bg.Rotation = 90
 local t = Instance.new("TextBox")
@@ -49,7 +49,8 @@ tt.BorderSizePixel = 0
 local b = Instance.new("TextButton")
 b.Parent = k
 b.Size = UDim2.new(0, 30, 0, 30)
-b.Position = UDim2.new(0, 550, 0, 50)
+b.Position = UDim2.new(0.5,0,0.1)
+b.AnchorPoint = Vector2.new(0.5,0)
 b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 b.BackgroundTransparency= 0.4
 b.Text = ""
@@ -69,7 +70,7 @@ local quint = TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
 local elastic = TweenInfo.new(4, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out)
 local linear = TweenInfo.new(5,Enum.EasingStyle.Linear,Enum.EasingDirection.Out,-1,true)
 local longquint = TweenInfo.new(5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
-local opening = {Position = UDim2.new(0.15, 0, 0.75, 0), Size = UDim2.new(0.7, 0, 0, 80)}
+local opening = {Position = UDim2.new(0.15,0,0.7), Size = UDim2.new(0.7, 0, 0, 80)}
 
 -- cmds
 
@@ -225,6 +226,9 @@ mbb.MouseButton1Click:Connect(function()
         mo = true
     end
 end)
+mb.MouseButton1Click:Connect(function()
+menu.Visible = false
+end)
 -- esp
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -282,7 +286,8 @@ _G.esp = toggleESP
 local nl = Instance.new("TextLabel")
 nl.Parent = k
 nl.Size = UDim2.new(0,350,0,30)
-nl.Position = UDim2.new(0,400,-1,0)
+nl.Position = UDim2.new(0.5,0,-1)
+nl.AnchorPoint = Vector2.new(0.5,0)
 nl.BackgroundColor3 = Color3.new(1,1,1)
 nl.BackgroundTransparency = 0.9
 nl.TextColor3 = Color3.fromRGB(255,0,128)
@@ -291,8 +296,8 @@ nl.TextScaled = true
 local nlc = Instance.new("UICorner")
 nlc.Parent = nl
 nlc.CornerRadius = UDim.new(1,0)
-local nopen = tw:Create(nl,quint,{Position = UDim2.new(0,400,0,0)})
-local nclose = tw:Create(nl,quint,{Position = UDim2.new(0,400,-1,0)})
+local nopen = tw:Create(nl,quint,{Position = UDim2.new(0.5,0,0)})
+local nclose = tw:Create(nl,quint,{Position = UDim2.new(0.5,0,-1)})
 local function notify(Text)
     nl.Text = Text
     nopen:Play()
@@ -317,7 +322,7 @@ local open = tw:Create(m, quint, opening)
 local bgo = tw:Create(black, quint, {BackgroundTransparency = 0.5})
 local bgc = tw:Create(black, quint, {BackgroundTransparency = 1})
 local open2 = tw:Create(mc, elastic, {CornerRadius = UDim.new(0.2, 0)})
-local open3 = tw:Create(b, quint, {Position = UDim2.new(0, 550, -1, 0)})
+local open3 = tw:Create(b, quint, {Position = UDim2.new(0.5,0,-1)})
 local open4 = tw:Create(t, quint, {Position = UDim2.new(0, 0, 0, 0)})
 b.MouseButton1Down:Connect(function()
     blurring:Play()
@@ -344,7 +349,7 @@ t.FocusLost:Connect(function()
     local jj = tw:Create(t,quint,{Position = UDim2.new(0,0,-1)})
     local close = tw:Create(m, quint, {Position = UDim2.new(0.475, 0, 1, 0)})
     local close2 = tw:Create(m, quint, {Size = UDim2.new(0.05, 0, 2, 0)})
-    local back = tw:Create(b, quint, {Position = UDim2.new(0, 550, 0, 50)})
+    local back = tw:Create(b, quint, {Position = UDim2.new(0.5,0,0.1)})
     local unsize = tw:Create(bb,longquint,{Size = UDim2.new(0.7,0,0.7)})
     local unpos = tw:Create(bb,longquint,{Position = UDim2.new(0.15,0,0.15)})
     local mcc = tw:Create(mc,quint,{CornerRadius = UDim.new(0,0)})
