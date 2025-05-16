@@ -1,6 +1,6 @@
 local loaded = false
 local k = Instance.new("ScreenGui")
-k.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+k.Parent = game.CoreGui
 local black = Instance.new("Frame")
 black.Parent = k
 black.Size = UDim2.new(1.5, 0, 1.5, 0)
@@ -34,7 +34,7 @@ t.TextSize = 35
 t.Font = Enum.Font.FredokaOne
 t.PlaceholderText = "COMMAND BAR"
 t.Size = UDim2.new(1, 0, 0.8, 0)
-t.BackgroundColor3 = Color3.fromRGB(150,150,150)
+t.BackgroundColor3 = Color3.fromRGB(150,165,150)
 t.Position = UDim2.new(0, 0, -1, 0)
 local tc = Instance.new("UICorner")
 tc.Parent = t
@@ -498,13 +498,29 @@ if isfile("hadarkred.txt") then
 	end
 end
 if not isfile("hadarkwhite.txt") and not isfile("hadarkred.txt") then
-	notify("hi")
-	notify("i see you first time here, choose your theme:")
+	bgo:Play()
 	local sfr = Instance.new("Frame", k)
-	sfr.Size = UDim2.new(0,100,0,100)
-	sfr.Position = UDim2.new(0.3, 0, 0.3, 0)
+	sfr.Size = UDim2.new(0,0,0,0)
+	sfr.Position = UDim2.new(0.5,0,0.5)
+	sfr.AnchorPoint = Vector2.new(0.5, 0.5)
+	sfr.BackgroundTransparency = 0.7
+	sfr.BorderSizePixel = 0
 	sfr.BackgroundColor3 = Color3.new(1, 1, 1)
-	sfr.BackgroundTransparency = 0.9
+	local sfl = Instance.new("TextLabel",sfr)
+	sfl.Size = UDim2.new(1, 0, 0.2, 0)
+	sfl.Position = UDim2.new(0, 0, -0.2, 0)
+	sfl.BackgroundTransparency = 0.7
+	sfl.BackgroundColor3 = Color3.new(1, 1, 1)
+	sfl.BorderSizePixel = 0
+	sfl.Text = "THEME"
+	sfl.TextColor3 = Color3.new(0, 0, 0)
+	sfl.Font = Enum.Font.SourceSansBold
+	sfl.TextScaled = true
+	local sfoo = {Size = UDim2.new(0, 150, 0, 150)}
+	local sfcc = {Size = UDim2.new(0, 0, 0, 0)}
+	local sfo = tw:Create(sfr,quint,sfoo)
+	local sfc = tw:Create(sfr,quint,sfcc)
+    sfo:Play()
 	local sb = Instance.new("TextButton", sfr)
 	sb.Size = UDim2.new(0.5, 0,1,0)
 	sb.Text = "White Red"
@@ -523,12 +539,15 @@ if not isfile("hadarkwhite.txt") and not isfile("hadarkred.txt") then
 	sb2.TextScaled = true
 	local sbc2 = Instance.new("UICorner", sb2)
 	sb.MouseButton1Down:Connect(function()
+		sfc:Play()
+		bgc:Play()
+		sfc.Completed:Wait()
 	    writefile("hadarkred.txt", "This is for HEART ADMIN")
 		sfr:Destroy()
 		sb:Destroy()
 		sb2:Destroy()
 		b.Visible = true
-		notify("nice, have a good day!")
+		notify("HI,CMDS FOR COMMANDS:)")
 		local currentTime = os.date("*t")
 		local hour = currentTime.hour
 		if hour >= 2 and hour < 5 then
@@ -536,6 +555,9 @@ if not isfile("hadarkwhite.txt") and not isfile("hadarkred.txt") then
 		end
 	end)
 	sb2.MouseButton1Down:Connect(function()
+		sfc:Play()
+		bgc:Play()
+		sfc.Completed:Wait()
 		cff.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
     	sfscl.TextColor3 = Color3.fromRGB(255,255,255)
 		t.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
@@ -557,7 +579,7 @@ if not isfile("hadarkwhite.txt") and not isfile("hadarkred.txt") then
 		sb:Destroy()
 		sb2:Destroy()
 		b.Visible = true
-		notify("Nice, have a good day!")
+		notify("HI,CMDS FOR COMMANDS:)")
 		local currentTime = os.date("*t")
 		local hour = currentTime.hour
 		if hour >= 2 and hour < 5 then
