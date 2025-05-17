@@ -71,7 +71,7 @@ local elastic = TweenInfo.new(4, Enum.EasingStyle.Elastic, Enum.EasingDirection.
 local linear = TweenInfo.new(5,Enum.EasingStyle.Linear,Enum.EasingDirection.Out,-1,true)
 local longquint = TweenInfo.new(5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
 local opening = {Position = UDim2.new(0.15,0,0.7), Size = UDim2.new(0.7, 0, 0, 80)}
-
+local fastlinear = TweenInfo.new(0.25, Enum.EasingStyle.Linear, Enum.EasingDirection.In)
 -- cmds
 
 local cff = Instance.new("Frame", k)
@@ -182,7 +182,85 @@ main.Size = UDim2.new(1, 0, 0.85, 0)
 main.Position = UDim2.new(0, 0, 0.15, 0)
 main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 main.BorderSizePixel = 0
-main.BackgroundTransparency = 0.05
+main.BackgroundTransparency = 0.1
+
+
+local pageopen = {Position = UDim2.new(-1, 0, 0.15, 0)}
+local pageclose = {Position = UDim2.new(0, 0, 0.15, 0)}
+local pb1 = Instance.new("TextButton")
+pb1.Parent = main
+pb1.Size = UDim2.new(1, 0, 0.2, 0)
+pb1.BackgroundColor3 = Color3.new(0.95,0.95,0.95)
+pb1.Text = " About"
+pb1.Font = Enum.Font.SourceSans
+pb1.TextScaled = true
+pb1.TextColor3 = Color3.new(0, 0, 0)
+pb1.BorderSizePixel = 0
+pb1.TextXAlignment = Enum.TextXAlignment.Left
+local pb2 = Instance.new("TextButton")
+pb2.Parent = main
+pb2.Size = pb1.Size
+pb2.Position = UDim2.new(0,0,0.2)
+pb2.BackgroundColor3 = Color3.new(1,1,1)
+pb2.BorderSizePixel = 0
+pb2.Text = " Commands"
+pb2.TextScaled = true
+pb2.Font = pb1.Font
+pb2.TextColor3 = Color3.new(0,0,0)
+pb2.TextXAlignment = Enum.TextXAlignment.Left
+local pb3 = Instance.new("TextButton")
+pb3.Parent = main
+pb3.Size = pb1.Size
+pb3.Position = UDim2.new(0,0,0.4)
+pb3.BackgroundColor3 = pb1.BackgroundColor3
+pb3.BorderSizePixel = 0
+pb3.Text = " Panels"
+pb3.TextScaled = true
+pb3.Font = pb1.Font
+pb3.TextColor3 = Color3.new(0,0,0)
+pb3.TextXAlignment = Enum.TextXAlignment.Left
+local pb4 = Instance.new("TextButton")
+pb4.Parent = main
+pb4.Size = pb1.Size
+pb4.Position = UDim2.new(0, 0, 0.6, 0)
+pb4.BackgroundColor3 = Color3.new(1,1,1)
+pb4.Text = " Settings"
+pb4.TextColor3 = Color3.new(0, 0, 0)
+pb4.Font = pb1.Font
+pb4.TextScaled = true
+pb4.BorderSizePixel = 0
+pb4.TextXAlignment = Enum.TextXAlignment.Left
+local p1 = Instance.new("Frame")
+p1.Parent = main
+p1.Size = UDim2.new(1, 0, 1, 0)
+p1.Position = UDim2.new(-2, 0, 0)
+p1.BackgroundColor3 = Color3.new(1,1,1)
+p1.BackgroundTransparency = 0.1
+p1.BorderSizePixel = 0
+local p2 = Instance.new("Frame")
+p2.Parent = main
+p2.Size = UDim2.new(1, 0, 1, 0)
+p2.Position = UDim2.new(-2, 0, 0)
+p2.BackgroundColor3 = Color3.new(1,1,1)
+p2.BackgroundTransparency = 0.1
+p2.BorderSizePixel = 0
+local p3 = Instance.new("Frame")
+p3.Parent = main
+p3.Size = UDim2.new(1, 0, 1, 0)
+p3.Position = UDim2.new(-2, 0, 0)
+p3.BackgroundColor3 = Color3.new(1,1,1)
+p3.BackgroundTransparency = 0.1
+p3.BorderSizePixel = 0
+local p4 = Instance.new("Frame")
+p4.Parent = main
+p4.Size = UDim2.new(1, 0, 1, 0)
+p4.Position = UDim2.new(-2, 0, 0)
+p4.BackgroundColor3 = Color3.new(1,1,1)
+p4.BackgroundTransparency = 0.1
+p4.BorderSizePixel = 0
+local po = tw:Create(main,fastlinear,pageopen)
+local pc = tw:Create(main,fastlinear,pageclose)
+
 local header = Instance.new("TextLabel", menu)
 header.Size = UDim2.new(1, 0, 0.15, 0)
 header.BorderSizePixel = 0
@@ -192,6 +270,27 @@ header.Font = Enum.Font.Highway
 header.TextColor3 = Color3.fromRGB(255, 255, 255)
 header.TextScaled = true
 header.Text = "HEART"
+local cb = Instance.new("TextButton")
+cb.Parent = header
+cb.Size = UDim2.new(0.15, 0, 0.9, 0)
+cb.Position = UDim2.new(0.52, 0, 0.05, 0)
+cb.BackgroundColor3 = Color3.new(0, 0, 0)
+cb.BackgroundTransparency = 0.5
+cb.Text = "<"
+cb.Visible = false
+cb.Font = Enum.Font.SourceSansLight
+cb.TextColor3 = Color3.new(1, 1, 1)
+cb.TextScaled = true
+cb.BorderSizePixel = 0
+cb.MouseButton1Click:Connect(function()
+	pc:Play()
+	cb.Visible = false
+	pc.Completed:Wait()
+    p1.Position = UDim2.new(2, 0, 0, 0)
+    p2.Position = UDim2.new(2, 0, 0, 0)
+    p3.Position = UDim2.new(2, 0, 0, 0)
+    p4.Position = UDim2.new(2, 0, 0, 0)
+end)
 local mb = Instance.new("TextButton")
 mb.Parent = header
 mb.Size = UDim2.new(0.15, 0, 0.9, 0)
@@ -214,20 +313,58 @@ mbb.Font = mb.Font
 mbb.BackgroundTransparency = 0.5
 mbb.Text = "-"
 mbb.TextScaled = true
-local op = tw:Create(main,quint,{Position = UDim2.new(0, 0, 0.15, 0)})
-local cl = tw:Create(main,quint,{Position = UDim2.new(0, 0, -1, 0)})
+local op = tw:Create(main,fastlinear,{Position = UDim2.new(0, 0, 0.15, 0)})
+local cl = tw:Create(main,fastlinear,{Position = UDim2.new(0, 0, -1, 0)})
 local mo = true
 mbb.MouseButton1Click:Connect(function()
     if mo == true then
         cl:Play()
         mo = false
+		cl.Completed:Wait()
+		menu.Size = UDim2.new(0, 300, 0, 60)
+		header.Size = UDim2.new(1, 0, 1, 0)
+		cb.Visible = false
     elseif mo == false then
         op:Play()
         mo = true
+		menu.Size = UDim2.new(0, 300, 0, 400)
+		header.Size = UDim2.new(1, 0, 0.15, 0)
     end
 end)
 mb.MouseButton1Click:Connect(function()
 menu.Visible = false
+end)
+pb1.MouseButton1Click:Connect(function()
+    po:Play()
+    p1.Position = UDim2.new(1, 0, 0, 0)
+    p2.Position = UDim2.new(2, 0, 0, 0)
+    p3.Position = UDim2.new(2, 0, 0, 0)
+    p4.Position = UDim2.new(2, 0, 0, 0)
+	cb.Visible = true
+end)
+pb2.MouseButton1Click:Connect(function()
+    po:Play()
+    p1.Position = UDim2.new(2, 0, 0, 0)
+    p2.Position = UDim2.new(1, 0, 0, 0)
+    p3.Position = UDim2.new(2, 0, 0, 0)
+    p4.Position = UDim2.new(2, 0, 0, 0)
+	cb.Visible = true
+end)
+pb3.MouseButton1Click:Connect(function()
+    po:Play()
+    p1.Position = UDim2.new(2, 0, 0, 0)
+    p2.Position = UDim2.new(2, 0, 0, 0)
+    p3.Position = UDim2.new(1, 0, 0, 0)
+    p4.Position = UDim2.new(2, 0, 0, 0)
+	cb.Visible = true
+end)
+pb4.MouseButton1Click:Connect(function()
+    po:Play()
+    p1.Position = UDim2.new(2, 0, 0, 0)
+    p2.Position = UDim2.new(2, 0, 0, 0)
+    p3.Position = UDim2.new(2, 0, 0, 0)
+    p4.Position = UDim2.new(1, 0, 0, 0)
+	cb.Visible = true
 end)
 -- esp
 local Players = game:GetService("Players")
