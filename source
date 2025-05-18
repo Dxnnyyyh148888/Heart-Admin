@@ -70,8 +70,11 @@ local quint = TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
 local elastic = TweenInfo.new(4, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out)
 local linear = TweenInfo.new(5,Enum.EasingStyle.Linear,Enum.EasingDirection.Out,-1,true)
 local longquint = TweenInfo.new(5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+local fastquint = TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
 local opening = {Position = UDim2.new(0.15,0,0.7), Size = UDim2.new(0.7, 0, 0, 80)}
 local fastlinear = TweenInfo.new(0.25, Enum.EasingStyle.Linear, Enum.EasingDirection.In)
+local fastback = TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+local back = TweenInfo.new(1, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
 -- cmds
 
 local cff = Instance.new("Frame", k)
@@ -170,8 +173,9 @@ dissapear(C)(CC)(WIP)
 -- menu
 local menu = Instance.new("Frame", k)
 menu.Size = UDim2.new(0,300,0,400)
-menu.Position = UDim2.new(0.35, 0, 0, 0)
+menu.Position = UDim2.new(0.5,0,0)
 menu.Active = true
+menu.AnchorPoint = Vector2.new(0.5, 0)
 menu.Draggable = true
 menu.Visible = false
 menu.BackgroundTransparency = 1
@@ -258,8 +262,253 @@ p4.Position = UDim2.new(-2, 0, 0)
 p4.BackgroundColor3 = Color3.new(1,1,1)
 p4.BackgroundTransparency = 0.1
 p4.BorderSizePixel = 0
-local po = tw:Create(main,fastlinear,pageopen)
-local pc = tw:Create(main,fastlinear,pageclose)
+-- first page
+local i1 = Instance.new("ImageButton")
+i1.Parent = p1
+i1.Size = UDim2.new(0.4, 0, 0.25, 0)
+i1.Position = UDim2.new(0.05, 0, 0.05)
+i1.BackgroundColor3 = Color3.new(1, 1, 1)
+i1.BackgroundTransparency = 0.8
+i1.Image = "rbxassetid://138943338963395"
+local title1 = Instance.new("TextLabel",p1)
+title1.Size = UDim2.new(0.45,0,0.15)
+title1.Position = UDim2.new(0.5, 0, 0.05, 0)
+title1.BackgroundTransparency = 1
+title1.Text = "HEART ADMIN"
+title1.TextColor3 = Color3.new(0, 0, 0)
+title1.TextScaled = true
+title1.Font = Enum.Font.SourceSansBold
+local title2 = Instance.new("TextLabel",p1)
+title2.Size = UDim2.new(0.45, 0, 0.15, 0)
+title2.Position = UDim2.new(0.5, 0, 0.22, 0)
+title2.BackgroundTransparency = 1
+title2.Text = "BeautyInStrengh"
+title2.TextYAlignment = Enum.TextYAlignment.Top
+title2.TextColor3 = Color3.new(0, 0, 0)
+title2.Font = Enum.Font.SourceSans
+title2.TextScaled = true
+local link = Instance.new("TextButton",p1)
+link.Size = UDim2.new(0.9, 0, 0.15, 0)
+link.Position = UDim2.new(0.05, 0, 0.35, 0)
+link.BackgroundColor3 = Color3.new(1, 1, 1)
+link.BorderColor3 = Color3.fromRGB(255, 0, 128)
+link.Text = "YOUTUBE:HeartAdminCMD"
+link.TextColor3 = link.BorderColor3
+link.TextScaled = true
+link.Font = Enum.Font.SourceSansLight
+link.MouseButton1Click:Connect(function()
+setclipboard("HeartAdminCMD")
+end)
+local link1 = Instance.new("TextButton",p1)
+link1.Size = link.Size
+link1.Position = UDim2.new(0.05, 0, 0.55)
+link1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+link1.BorderColor3 = link.BorderColor3
+link1.TextColor3 = link.TextColor3
+link1.Text = "TIKTOK:HeartAdminRBX"
+link1.TextScaled = true
+link1.Font = link.Font
+link1.MouseButton1Click:Connect(function()
+setclipboard("HeartAdminRBX")
+end)
+local link2 = Instance.new("TextButton",p1)
+link2.Size = link.Size
+link2.Position = UDim2.new(0.05, 0, 0.75)
+link2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+link2.BorderColor3 = link.BorderColor3
+link2.TextColor3 = link.TextColor3
+link2.Text = "DISCORD:"
+link2.TextScaled = true
+link2.Font = link.Font
+link2.MouseButton1Click:Connect(function()
+setclipboard("")
+end)
+-- second page
+local scrl = Instance.new("ScrollingFrame",p2)
+scrl.Size = UDim2.new(1, 0, 1, 0)
+scrl.CanvasSize = cfsc.CanvasSize
+scrl.ScrollBarThickness = 0
+scrl.BackgroundTransparency = 1
+local cmds = Instance.new("TextLabel",scrl)
+cmds.Size = UDim2.new(0.95, 0, 1, 0)
+cmds.Position = UDim2.new(0.05, 0, 0, 0)
+cmds.BackgroundTransparency = 1
+cmds.TextColor3 = Color3.fromRGB(255, 0, 128)
+cmds.TextScaled = true
+cmds.Font = Enum.Font.SourceSans
+cmds.Text = sfscl.Text
+cmds.TextXAlignment = Enum.TextXAlignment.Left
+cmds.TextYAlignment = Enum.TextYAlignment.Top
+-- third page
+local gb = Instance.new("TextButton")
+gb.Parent = p3
+gb.Size = UDim2.new(1, 0, 0.2, 0)
+gb.Position = UDim2.new(0, 0, 0.01, 0)
+gb.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+gb.BorderSizePixel = 0
+gb.TextScaled = true
+gb.Text = "GAME HUB"
+gb.TextColor3 = Color3.fromRGB(255, 0, 128)
+gb.BorderColor3 = Color3.fromRGB(255, 0, 128)
+gb.Font = Enum.Font.SourceSansLight
+gb.MouseButton1Click:Connect(function()
+	-- WIP
+end)
+local gb1 = Instance.new("TextButton")
+gb1.Parent = p3
+gb1.Size = UDim2.new(1, 0, 0.2, 0)
+gb1.Position = UDim2.new(0, 0, 0.21, 0)
+gb1.BackgroundColor3 = Color3.new(1, 1, 1)
+gb1.Text = "FLIGHT GUI"
+gb1.Font = gb.Font
+gb1.TextScaled = true
+gb1.TextColor3 = gb.TextColor3
+gb1.BorderColor3 = gb.BorderColor3
+gb1.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/Flight"))()
+end)
+local gb2 = Instance.new("TextButton")
+gb2.Parent = p3
+gb2.TextScaled = true
+gb2.Size = UDim2.new(1, 0, 0.2, 0)
+gb2.Position = UDim2.new(0, 0, 0.41, 0)
+gb2.BackgroundColor3 = Color3.new(1, 1, 1)
+gb2.Text = "FLING GUI"
+gb2.Font = gb.Font
+gb2.TextColor3 = gb.TextColor3
+gb2.BorderColor3 = gb.BorderColor3
+gb2.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Fling-gui-troll-17597"))()
+end)
+local gb3 = Instance.new("TextButton")
+gb3.Parent = p3
+gb3.TextScaled = true
+gb3.Size = UDim2.new(1, 0, 0.2, 0)
+gb3.Position = UDim2.new(0, 0, 0.61, 0)
+gb3.BackgroundColor3 = Color3.new(1, 1, 1)
+gb3.Text = "TARGET GUI"
+gb3.Font = gb.Font
+gb3.TextColor3 = gb.TextColor3
+gb3.BorderColor3 = gb.BorderColor3
+gb3.MouseButton1Click:Connect(function()
+-- WIP
+end)
+-- fourth page
+local mopen = tw:Create(menu,fastback,{Size = UDim2.new(0, 300, 0, 400)})
+local mclose = tw:Create(menu,fastlinear,{Size = UDim2.new(0, 0, 0, 0)})
+
+local sbb = Instance.new("TextButton")
+sbb.Parent = p4
+sbb.Size = UDim2.new(0.9, 0, 0.15, 0)
+sbb.Position = UDim2.new(0.05, 0, 0.05, 0)
+sbb.BackgroundColor3 = Color3.new(0, 0, 0)
+sbb.BackgroundTransparency = 0.5
+sbb.Text = "HIDE MENU"
+sbb.TextScaled = true
+sbb.TextColor3 = Color3.new(0, 0, 0)
+local sbc = Instance.new("UICorner",sbb)
+local sbb1 = Instance.new("TextButton")
+sbb1.Parent = p4
+sbb1.Size = UDim2.new(0.9, 0, 0.15, 0)
+sbb1.Position = UDim2.new(0.05, 0, 0.25, 0)
+sbb1.BackgroundColor3 = Color3.new(0, 0, 0)
+sbb1.BackgroundTransparency = 0.5
+sbb1.Text = "SMALL UI"
+sbb1.TextScaled = true
+sbb1.TextColor3 = Color3.new(0, 0, 0)
+local lowing = tw:Create(menu,back,{Size = UDim2.new(0, 150, 0, 250)})
+local upping = tw:Create(menu,back,{Size = UDim2.new(0, 300, 0, 400)})
+sbb1.MouseButton1Click:Connect(function()
+	if sbb1.Text == "SMALL UI" then
+ 	   lowing:Play()
+		sbb1.Text = "BIG UI"
+	  else
+		sbb1.Text = "SMALL UI"
+		upping:Play()
+	end
+end)
+local sbc = Instance.new("UICorner",sbb1)
+local sp = Instance.new("Frame")
+sp.Parent = p4
+sp.Size = UDim2.new(0.9, 0, 0.4, 0)
+sp.Position = UDim2.new(0.05, 0, 0.55, 0)
+sp.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
+sp.BackgroundTransparency = 0.5
+sp.BorderSizePixel = 0
+local spl = Instance.new("TextLabel")
+spl.Parent = sp
+spl.Size = UDim2.new(1, 0, 0.2, 0)
+spl.Position = UDim2.new(0, 0, -0.2, 0)
+spl.BackgroundColor3 = Color3.new(0, 0, 0)
+spl.BackgroundTransparency = 0.5
+spl.Text = " Advanced"
+spl.BorderSizePixel = 0
+spl.TextColor3 = Color3.new(1, 1, 1)
+spl.TextScaled = true
+spl.TextXAlignment = Enum.TextXAlignment.Left
+local spb = Instance.new("TextButton")
+spb.Parent = sp
+spb.Size = UDim2.new(0.4, 0, 0.4, 0)
+spb.BackgroundColor3 = Color3.new(1, 1, 1)
+spb.BackgroundTransparency = 0.5
+spb.Position = UDim2.new(0.05, 0, 0.05, 0)
+spb.Text = "REJOIN"
+spb.BorderSizePixel = 0
+spb.Font = gb.Font
+spb.TextColor3 = Color3.new(0, 0, 0)
+spb.TextScaled = true
+local spb1 = Instance.new("TextButton")
+spb1.BackgroundColor3 = Color3.new(1, 1, 1)
+spb1.BorderSizePixel = 0
+spb.MouseButton1Click:Connect(function()
+game:GetService("TeleportService"):Teleport(game.PlaceId)
+end)
+spb1.BackgroundTransparency = 0.5
+spb1.Parent = sp
+spb1.Size = UDim2.new(0.4, 0, 0.4, 0)
+spb1.Position = UDim2.new(0.55, 0, 0.05, 0)
+spb1.Text = "CONSOLE"
+spb1.Font = gb.Font
+spb1.TextColor3 = Color3.new(0, 0, 0)
+spb1.TextScaled = true
+local spb2 = Instance.new("TextButton")
+spb2.BorderSizePixel = 0
+spb1.MouseButton1Click:Connect(function()
+game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+end)
+spb2.BackgroundColor3 = Color3.new(1, 1, 1)
+spb2.BackgroundTransparency = 0.5
+spb2.Parent = sp
+spb2.Size = UDim2.new(0.4, 0, 0.4, 0)
+spb2.Position = UDim2.new(0.05, 0, 0.55, 0)
+spb2.Text = "FULL RESTART"
+spb2.Font = gb.Font
+spb2.MouseButton1Click:Connect(function()
+delfile("hadarkred.txt")
+delfile("hadarkwhite.txt")
+k:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/source"))()
+end)
+spb2.TextColor3 = Color3.new(0, 0, 0)
+spb2.TextScaled = true
+local spb3 = Instance.new("TextButton")
+spb3.BorderSizePixel = 0
+spb3.MouseButton1Click:Connect(function()
+k:Destroy()
+end)
+spb3.BackgroundColor3 = Color3.new(1, 1, 1)
+spb3.BackgroundTransparency = 0.5
+spb3.Parent = sp
+spb3.Size = UDim2.new(0.4, 0, 0.4, 0)
+spb3.Position = UDim2.new(0.55, 0, 0.55, 0)
+spb3.Text = "CLOSE"
+spb3.Font = gb.Font
+spb3.TextColor3 = Color3.new(0, 0, 0)
+spb3.TextScaled = true
+
+
+local po = tw:Create(main,fastquint,pageopen)
+local pc = tw:Create(main,fastquint,pageclose)
 
 local header = Instance.new("TextLabel", menu)
 header.Size = UDim2.new(1, 0, 0.15, 0)
@@ -580,7 +829,7 @@ t.FocusLost:Connect(function()
     elseif t.Text == "reset" or t.Text == "Reset" or t.Text == "Die" or t.Text == "die" or t.Text == "Kill" or t.Text == "kill" then
         game.Players.LocalPlayer.Character.Humanoid.Health = 0
         notify("killed")
-    elseif t.Text == "m" or t.Text == "menu" or t.Text == "Menu" then
+    elseif t.Text:lower() == "m" or t.Text:lower() == "menu" then
         menu.Visible = true
     elseif t.Text == "chill" or t.Text == "Chill" then
         bgc.Completed:Wait()
@@ -606,15 +855,53 @@ if isfile("hadarkwhite.txt") then
         ColorSequenceKeypoint.new(0, Color3.new(1,1,1)),
         ColorSequenceKeypoint.new(1, Color3.new(0, 0, 0))
     })
-        main.BackgroundColor3 = Color3.fromRGB(31,31,31)
+	title1.TextColor3 = Color3.fromRGB(200,200,200)
+	title2.TextColor3 = Color3.fromRGB(200,200,200)
+	header.TextColor3 = Color3.fromRGB(220,220,220)
+    main.BackgroundColor3 = Color3.fromRGB(31,31,31)
 	header.BackgroundColor3 = Color3.fromRGB(150,150,150)
-        header.TextColor3 = Color3.new(1,1,1)
 	t.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
 	tt.BackgroundColor3 = t.BackgroundColor3
 	m.BackgroundColor3 = Color3.new(1,1,1)
 	mm.BackgroundColor3 = Color3.new(1,1,1)
 	nl.TextColor3 = Color3.fromRGB(31, 31, 31)
 	b.BackgroundColor3 = Color3.new(0, 0, 0)
+	p1.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+	p2.BackgroundColor3 = Color3.fromRGB(31,31,31)
+	p3.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+	p4.BackgroundColor3 = Color3.fromRGB(31,31,31)
+	pb1.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+	pb2.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+	pb3.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+	pb4.BackgroundColor3 = Color3.fromRGB(36,36,36)
+	pb1.TextColor3 = Color3.fromRGB(150, 150, 150)
+	pb2.TextColor3 = Color3.fromRGB(150, 150, 150)
+	pb3.TextColor3 = Color3.fromRGB(150, 150, 150)
+	pb4.TextColor3 = Color3.fromRGB(150, 150, 150)
+	link1.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+	link2.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+	link.BackgroundColor3 = Color3.fromRGB(36, 36,36)
+	link.TextColor3 = Color3.fromRGB(150,150,150)
+	link1.TextColor3 = Color3.fromRGB(150,150,150)
+	link2.TextColor3 = Color3.fromRGB(150,150,150)
+	link.BorderSizePixel = 0
+	link2.BorderSizePixel = 0
+	link1.BorderSizePixel = 0
+	gb.BackgroundColor3 = Color3.fromRGB(45,45,45)
+	gb.TextColor3 = Color3.fromRGB(150, 150,150)
+	gb.BorderSizePixel = 0
+	gb1.BackgroundColor3 = Color3.fromRGB(45,45,45)
+	gb1.TextColor3 = Color3.fromRGB(150, 150,150)
+	gb1.BorderSizePixel = 0
+	gb2.BackgroundColor3 = Color3.fromRGB(45,45,45)
+	gb2.TextColor3 = Color3.fromRGB(150, 150,150)
+	gb2.BorderSizePixel = 0
+	gb3.BackgroundColor3 = Color3.fromRGB(45,45,45)
+	gb3.TextColor3 = Color3.fromRGB(150, 150,150)
+	gb3.BorderSizePixel = 0
+	sbb.TextColor3 = Color3.fromRGB(150, 150, 150)
+	sbb1.TextColor3 = Color3.fromRGB(150, 150, 150)
+	cmds.TextColor3 = Color3.fromRGB(150, 150, 150)
 	print("loaded hadarkwhite")
 	b.Visible = true
 	cff.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
@@ -710,6 +997,45 @@ if not isfile("hadarkwhite.txt") and not isfile("hadarkred.txt") then
 		mm.BackgroundColor3 = Color3.new(1,1,1)
 		nl.TextColor3 = Color3.new(0, 0, 0)
 		b.BackgroundColor3 = Color3.new(0, 0, 0)
+		title1.TextColor3 = Color3.fromRGB(200,200,200)
+		title2.TextColor3 = Color3.fromRGB(200,200,200)
+		header.TextColor3 = Color3.fromRGB(220,220,220)
+		p1.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+		p2.BackgroundColor3 = Color3.fromRGB(31,31,31)
+		p3.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+		p4.BackgroundColor3 = Color3.fromRGB(31,31,31)
+		pb1.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+		pb2.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+		pb3.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+		pb4.BackgroundColor3 = Color3.fromRGB(36,36,36)
+		pb1.TextColor3 = Color3.fromRGB(150, 150, 150)
+		pb2.TextColor3 = Color3.fromRGB(150, 150, 150)
+		pb3.TextColor3 = Color3.fromRGB(150, 150, 150)
+		pb4.TextColor3 = Color3.fromRGB(150, 150, 150)
+		link1.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+		link2.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+		link.BackgroundColor3 = Color3.fromRGB(36, 36,36)
+		link.TextColor3 = Color3.fromRGB(150,150,150)
+		link1.TextColor3 = Color3.fromRGB(150,150,150)
+		link2.TextColor3 = Color3.fromRGB(150,150,150)
+		link.BorderSizePixel = 0
+		link2.BorderSizePixel = 0
+		link1.BorderSizePixel = 0
+		gb.BackgroundColor3 = Color3.fromRGB(45,45,45)
+		gb.TextColor3 = Color3.fromRGB(150, 150,150)
+		gb.BorderSizePixel = 0
+		gb1.BackgroundColor3 = Color3.fromRGB(45,45,45)
+		gb1.TextColor3 = Color3.fromRGB(150, 150,150)
+		gb1.BorderSizePixel = 0
+		gb2.BackgroundColor3 = Color3.fromRGB(45,45,45)
+		gb2.TextColor3 = Color3.fromRGB(150, 150,150)
+		gb2.BorderSizePixel = 0
+		gb3.BackgroundColor3 = Color3.fromRGB(45,45,45)
+		gb3.TextColor3 = Color3.fromRGB(150, 150,150)
+		gb3.BorderSizePixel = 0
+		sbb.TextColor3 = Color3.fromRGB(150, 150, 150)
+		sbb1.TextColor3 = Color3.fromRGB(150, 150, 150)
+		cmds.TextColor3 = Color3.fromRGB(150, 150, 150)
 		print("loaded hadarkwhite")
 		writefile("hadarkwhite.txt", "This is for HEART ADMIN")
 		sfr:Destroy()
