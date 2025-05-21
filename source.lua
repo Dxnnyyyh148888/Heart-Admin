@@ -118,12 +118,7 @@ sfscl.TextXAlignment = Enum.TextXAlignment.Left
 sfscl.TextYAlignment = Enum.TextYAlignment.Top
 sfscl.Font = Enum.Font.SourceSans
 sfscl.TextColor3 = Color3.fromRGB(255, 0, 128)
-sfscl.Text = [[WIP = WORK IN PROCESS
-CC = CAN CRASH
-CL = CAN LAG
-G = GUI
-LS = LOADSTRING
-C = CLIENT, VISUAL
+sfscl.Text = [[
 =HEART ADMIN
 menu/m(G)
 change theme
@@ -324,8 +319,34 @@ link2.MouseButton1Click:Connect(function()
 setclipboard("")
 end)
 -- second page
+local cf = Instance.new("Frame", p2)
+cf.Size = UDim2.new(1, 0, 0.15, 0)
+cf.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+cf.BackgroundTransparency = 0.5
+cf.BorderSizePixel = 0
+local b1 = Instance.new("TextButton", p2)
+b1.Size = UDim2.new(0.175, 0, 0.15, 0)
+b1.Position = UDim2.new(0.6, 0, 0, 0)
+b1.BackgroundColor3 = Color3.fromRGB(245, 0, 118)
+b1.Text = "&"
+b1.TextColor3 = Color3.new(1, 1, 1)
+b1.Font = Enum.Font.FredokaOne
+b1.TextScaled = true
+local b2 = Instance.new("TextButton", p2)
+b2.Size = b1.Size
+b2.Position = UDim2.new(0.2, 0)
+b2.BackgroundColor3 = b1.BackgroundColor3
+b2.Text = "?"
+b2.TextScaled = true
+b2.TextColor3 = Color3.new(1, 1, 1)
+b2.Font = b1.Font
+local bc1 = Instance.new("UICorner", b1)
+bc1.CornerRadius = UDim.new(1, 0)
+local bc2 = Instance.new("UICorner", b2)
+bc2.CornerRadius = UDim.new(1,0)
 local scrl = Instance.new("ScrollingFrame",p2)
-scrl.Size = UDim2.new(1, 0, 1, 0)
+scrl.Size = UDim2.new(1, 0, 0.85, 0)
+scrl.Position = UDim2.new(0, 0, 0.15, 0)
 scrl.CanvasSize = cfsc.CanvasSize
 scrl.ScrollBarThickness = 0
 scrl.BackgroundTransparency = 1
@@ -339,6 +360,58 @@ cmds.Font = Enum.Font.SourceSans
 cmds.Text = sfscl.Text
 cmds.TextXAlignment = Enum.TextXAlignment.Left
 cmds.TextYAlignment = Enum.TextYAlignment.Top
+local nf = Instance.new("Frame", p2)
+nf.Size = UDim2.new(0,0,0)
+nf.Position = UDim2.new(0.5, 0, 0.5, 0)
+nf.BackgroundColor3 = Color3.new(1, 1, 1)
+nf.BorderSizePixel = 0 
+local nfll = Instance.new("TextLabel", nf)
+nfll.Size = UDim2.new(1, 0, 0.15, 0)
+nfll.TextXAlignment = Enum.TextXAlignment.Left
+nfll.Text = " KEYWORDS"
+nfll.TextColor3 = Color3.new(1, 1, 1)
+nfll.BorderSizePixel = 0
+nfll.TextScaled = true
+nfll.BackgroundColor3 = Color3.fromRGB(255, 0, 128)
+local nfb = Instance.new("TextButton", nfll)
+nfb.Size = UDim2.new(0.15, 0, 0.9, 0)
+nfb.Position = UDim2.new(0.84, 0, 0.05, 0)
+nfb.BackgroundColor3 = Color3.new(0, 0, 0)
+nfb.BorderSizePixel = 0 
+nfb.BackgroundTransparency = 0.5
+nfb.Text = "X"
+nfb.Font = Enum.Font.SourceSansLight
+nfb.TextColor3 = Color3.new(1, 1, 1)
+nfb.TextScaled = true
+local nfi = Instance.new("TextLabel", nf)
+nfi.Size = UDim2.new(0.9, 0, 0.83, 0)
+nfi.Position = UDim2.new(0.05, 0, 0.16, 0)
+nfi.BackgroundTransparency = 1
+nfi.Text = ""
+nfi.TextColor3 = Color3.new(0, 0, 0)
+nfi.TextScaled = true
+local nio = {Size = UDim2.new(0.9, 0, 0.9, 0),Position = UDim2.new(0.05, 0, 0.05, 0)}
+local nic = {Size = UDim2.new(0, 0, 0, 0),Position = UDim2.new(0.6, 0, 0.5, 0)}
+local nop = tw:Create(nf,fastquint,nio)
+local ncl = tw:create(nf,fastquint,nic)
+b1.MouseButton1Click:Connect(function ()
+	nop:Play()
+	nfll.Text = "KEYWORDS"
+	nfi.Text = [[WIP = WORK IN PROCESS
+CC = CAN CRASH
+CL = CAN LAG
+G = GUI
+LS = LOADSTRING
+C = CLIENT, VISUAL]]
+end)
+b2.MouseButton1Click:Connect(function ()
+	nop:Play()
+	nfll.Text = "COMMANDS"
+	nfi.Text = [[Commands is the functions that will work if you tipe the spec. word in command bar.]]
+end)
+nfb.MouseButton1Click:Connect(function ()
+	ncl:Play()
+end)
 -- third page
 local gb = Instance.new("TextButton")
 gb.Parent = p3
@@ -358,14 +431,14 @@ local gb1 = Instance.new("TextButton")
 gb1.Parent = p3
 gb1.Size = UDim2.new(1, 0, 0.2, 0)
 gb1.Position = UDim2.new(0, 0, 0.21, 0)
-gb1.BackgroundColor3 = Color3.new(1, 1, 1)
+gb1.BackgroundColor3 = Color3.new(1,1,1)
 gb1.Text = "FLIGHT GUI"
 gb1.Font = gb.Font
 gb1.TextScaled = true
 gb1.TextColor3 = gb.TextColor3
 gb1.BorderColor3 = gb.BorderColor3
 gb1.MouseButton1Click:Connect(function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/Flight"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/Flight.html"))()
 end)
 local gb2 = Instance.new("TextButton")
 gb2.Parent = p3
@@ -385,7 +458,7 @@ gb3.Parent = p3
 gb3.TextScaled = true
 gb3.Size = UDim2.new(1, 0, 0.2, 0)
 gb3.Position = UDim2.new(0, 0, 0.61, 0)
-gb3.BackgroundColor3 = Color3.new(1, 1, 1)
+gb3.BackgroundColor3 = Color3.new(1,1,1)
 gb3.Text = "TARGET GUI"
 gb3.Font = gb.Font
 gb3.TextColor3 = gb.TextColor3
@@ -406,6 +479,9 @@ sbb.BackgroundTransparency = 0.5
 sbb.Text = "HIDE MENU"
 sbb.TextScaled = true
 sbb.TextColor3 = Color3.new(0, 0, 0)
+sbb.MouseButton1Click:Connect(function ()
+	menu.Visible = false
+end)
 local sbc = Instance.new("UICorner",sbb)
 local sbb1 = Instance.new("TextButton")
 sbb1.Parent = p4
@@ -487,7 +563,7 @@ spb2.MouseButton1Click:Connect(function()
 delfile("hadarkred.txt")
 delfile("hadarkwhite.txt")
 k:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/source"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/source.lua"))()
 end)
 spb2.TextColor3 = Color3.new(0, 0, 0)
 spb2.TextScaled = true
@@ -751,7 +827,7 @@ t.FocusLost:Connect(function()
     b.BackgroundTransparency = 0.4
     bb.ImageTransparency = 0
     if t.Text == "fly" or t.Text == "Fly" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/Flight"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/Flight.html"))()
     elseif t.Text == "close" or t.Text == "Close" then
         k:Destroy()
     elseif t.Text == "Fling" or t.Text == "fling" then
@@ -839,7 +915,7 @@ t.FocusLost:Connect(function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/infyiff/backup/main/dex.lua'))()
     elseif t.Text:lower() == "restart" then
         k:Destroy()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/source"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/source.lua"))()
     end
     t.Text = ""
     wait(4.9)
@@ -887,13 +963,13 @@ if isfile("hadarkwhite.txt") then
 	link.BorderSizePixel = 0
 	link2.BorderSizePixel = 0
 	link1.BorderSizePixel = 0
-	gb.BackgroundColor3 = Color3.fromRGB(45,45,45)
+	gb.BackgroundColor3 = Color3.fromRGB(35,35,35)
 	gb.TextColor3 = Color3.fromRGB(150, 150,150)
 	gb.BorderSizePixel = 0
 	gb1.BackgroundColor3 = Color3.fromRGB(45,45,45)
 	gb1.TextColor3 = Color3.fromRGB(150, 150,150)
 	gb1.BorderSizePixel = 0
-	gb2.BackgroundColor3 = Color3.fromRGB(45,45,45)
+	gb2.BackgroundColor3 = Color3.fromRGB(35,35,35)
 	gb2.TextColor3 = Color3.fromRGB(150, 150,150)
 	gb2.BorderSizePixel = 0
 	gb3.BackgroundColor3 = Color3.fromRGB(45,45,45)
@@ -902,6 +978,11 @@ if isfile("hadarkwhite.txt") then
 	sbb.TextColor3 = Color3.fromRGB(150, 150, 150)
 	sbb1.TextColor3 = Color3.fromRGB(150, 150, 150)
 	cmds.TextColor3 = Color3.fromRGB(150, 150, 150)
+	b1.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+	b2.BackgroundColor3 = b1.BackgroundColor3
+	nf.BackgroundColor3 = main.BackgroundColor3
+	nfi.TextColor3 = Color3.fromRGB(150, 150, 150)
+	nfll.BackgroundColor3 = header.BackgroundColor3
 	print("loaded hadarkwhite")
 	b.Visible = true
 	cff.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
@@ -1036,6 +1117,11 @@ if not isfile("hadarkwhite.txt") and not isfile("hadarkred.txt") then
 		sbb.TextColor3 = Color3.fromRGB(150, 150, 150)
 		sbb1.TextColor3 = Color3.fromRGB(150, 150, 150)
 		cmds.TextColor3 = Color3.fromRGB(150, 150, 150)
+		b1.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+		b2.BackgroundColor3 = b1.BackgroundColor3
+		nf.BackgroundColor3 = main.BackgroundColor3
+		nfi.TextColor3 = Color3.fromRGB(150, 150, 150)
+		nfll.BackgroundColor3 = header.BackgroundColor3
 		print("loaded hadarkwhite")
 		writefile("hadarkwhite.txt", "This is for HEART ADMIN")
 		sfr:Destroy()
