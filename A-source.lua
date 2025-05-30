@@ -1,3 +1,5 @@
+-- >> HEARTADMIN .gg/@gvb800(heart) << --
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/A-source.lua"))()
 local loaded = false
 local k = Instance.new("ScreenGui")
 k.Parent = game.CoreGui
@@ -563,7 +565,7 @@ spb2.MouseButton1Click:Connect(function()
 delfile("hadarkred.txt")
 delfile("hadarkwhite.txt")
 k:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/source.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/A-source.lua"))()
 end)
 spb2.TextColor3 = Color3.new(0, 0, 0)
 spb2.TextScaled = true
@@ -915,7 +917,7 @@ t.FocusLost:Connect(function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/infyiff/backup/main/dex.lua'))()
     elseif t.Text:lower() == "restart" then
         k:Destroy()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/source.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/A-source.lua"))()
     end
     t.Text = ""
     wait(4.9)
