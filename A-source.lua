@@ -917,7 +917,7 @@ t.FocusLost:Connect(function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/infyiff/backup/main/dex.lua'))()
     elseif t.Text:lower() == "restart" then
         k:Destroy()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/A-source.lua")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/A-source.lua"))()
     elseif t.Text:lower() == "gamehub" or t.Text:lower() == "gh" or t.Text:lower() == "hub" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/main/Gamehub.lua"))()
     end
