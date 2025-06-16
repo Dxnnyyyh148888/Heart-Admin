@@ -919,7 +919,7 @@ t.FocusLost:Connect(function()
         k:Destroy()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/A-source.lua")
     elseif t.Text:lower() == "gamehub" or t.Text:lower() == "gh" or t.Text:lower() == "hub" then
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/Gamehub.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/main/Gamehub.lua"))()
     end
     t.Text = ""
     wait(4.9)
