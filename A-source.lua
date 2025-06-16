@@ -126,7 +126,7 @@ menu/m(G)
 change theme
 chill
 info(G)(WIP)
-gamehub/gh(LS)(G)(WIP)
+gamehub/gh(LS)(G)
 close
 restart(LS)
 
@@ -409,7 +409,7 @@ end)
 b2.MouseButton1Click:Connect(function ()
 	nop:Play()
 	nfll.Text = "COMMANDS"
-	nfi.Text = [[Commands is the functions that will work if you tipe the spec. word in command bar.]]
+	nfi.Text = [[Commands are functions that will run if you enter a special word in the command bar.]]
 end)
 nfb.MouseButton1Click:Connect(function ()
 	ncl:Play()
@@ -427,7 +427,7 @@ gb.TextColor3 = Color3.fromRGB(255, 0, 128)
 gb.BorderColor3 = Color3.fromRGB(255, 0, 128)
 gb.Font = Enum.Font.SourceSansLight
 gb.MouseButton1Click:Connect(function()
-	-- WIP
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/main/Gamehub.lua"))()
 end)
 local gb1 = Instance.new("TextButton")
 gb1.Parent = p3
