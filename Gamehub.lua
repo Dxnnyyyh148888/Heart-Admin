@@ -71,7 +71,7 @@ local small = {Size = UDim2.new(0.9,0,0.2)}
 local normal= {Size = UDim2.new(0.95,0,0.25)}
 local pbu  = {Position = UDim2.new(0.025,0,0.41)}
 local pbu2 = {Position = UDim2.new(0.025,0,0.68)}
-local pbd0 = {Position = UDim2.new(0.025,0,0.24)}
+local pbd0 = {Position = UDim2.new(0.025,0,0.22)}
 local pbd1 = {Position = UDim2.new(0.025,0,0.50)}
 local pbd2 = {Position = UDim2.new(0.025,0,0.67)}
 local pbn1 = {Position = UDim2.new(0.025,0,0.2)}
@@ -81,17 +81,26 @@ local pbn3 = {Position = UDim2.new(0.025,0,0.72)}
 local buttons = {bb, bb2, bb3}
 
 for i, btn in ipairs(buttons) do
- btn.MouseButton1Down:Connect(function()
-  if i==1 then
-   ts:Create(bb, animashke0, small):Play()
-   ts:Create(bb2, animashke2, pbu):Play()
-   ts:Create(bb3, animashke2, pbu2):Play()
-  elseif i==2 then
-   ts:Create(bb2, animashke0, small):Play()
-   ts:Create(bb3, animashke2, pbd2):Play()
-  elseif i==3 then
-   ts:Create(bb, animashke2, pbn1):Play()
-   ts:Create(bb2, animashke2, pbn2):Play()
-   ts:Create(bb3, animashke0, small):Play()
-  end
- end)
+	btn.MouseButton1Down:Connect(function()
+		if i==1 then
+			ts:Create(bb, animashke0, small):Play()
+			ts:Create(bb2, animashke2, pbu):Play()
+			ts:Create(bb3, animashke2, pbu2):Play()
+		elseif i==2 then
+			ts:Create(bb2, animashke0, small):Play()
+			ts:Create(bb3, animashke2, pbd2):Play()
+		elseif i==3 then
+			ts:Create(bb, animashke2, pbn1):Play()
+			ts:Create(bb2, animashke2, pbn2):Play()
+			ts:Create(bb3, animashke0, small):Play()
+		end
+	end)
+	btn.MouseButton1Up:Connect(function()
+		ts:Create(bb, animashke3, normal):Play()
+		ts:Create(bb2, animashke3, normal):Play()
+		ts:Create(bb3, animashke3, normal):Play()
+		ts:Create(bb, animashke3, pbn1):Play()
+		ts:Create(bb2, animashke3, pbn2):Play()
+		ts:Create(bb3, animashke3, pbn3):Play()
+	end)
+end
