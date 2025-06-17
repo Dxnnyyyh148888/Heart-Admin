@@ -920,6 +920,10 @@ t.FocusLost:Connect(function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/A-source.lua"))()
     elseif t.Text:lower() == "gamehub" or t.Text:lower() == "gh" or t.Text:lower() == "hub" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/main/Gamehub.lua"))()
+    elseif t.Text:lower() == "executor" or t.Text:lower() == "exec" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/ThatOneGirl-Executor/refs/heads/main/SourceCode"))()
+    elseif t.Text:lower() == "jerk" then
+        loadstring(game:HttpGet("https://pastefy.app/wa3v2Vgm/raw"))()
     end
     t.Text = ""
     wait(4.9)
