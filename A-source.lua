@@ -143,6 +143,11 @@ jump
 sit
 ESP
 gotoall(WIP)
+minzoom[number]
+maxzoom[number]
+fov[number]
+thirdp
+firstp
 
 =fun and troll
 bang(LS)(G)
@@ -697,10 +702,8 @@ end)
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
-
 local espEnabled = false
 local espParts = {}
-
 local function createESP(target)
 	local box = Instance.new("BoxHandleAdornment")
 	box.Name = "ESPBox"
@@ -709,11 +712,10 @@ local function createESP(target)
 	box.ZIndex = 10
 	box.Size = Vector3.new(3, 5, 1)
 	box.Transparency = 1
-	box.Color3 = Color3.new(0, 0, 0)
+	box.Color3 = Color3.new(1,1,1)
 	box.Parent = target.Character
 	espParts[target] = box
 end
-
 local function updateESP()
 	for player, box in pairs(espParts) do
 		if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
@@ -721,16 +723,14 @@ local function updateESP()
 		end
 	end
 end
-
 local function toggleESP(state)
 	espEnabled = state
 	for player, box in pairs(espParts) do
 		if box then
-			tw:Create(box, longquint, {Transparency = state and 0.8 or 1}):Play()
+			tw:Create(box, longquint, {Transparency = state and 0.5 or 1}):Play()
 		end
 	end
 end
-
 task.spawn(function()
 	while true do
 		if espEnabled then
