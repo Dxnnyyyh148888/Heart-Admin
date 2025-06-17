@@ -929,11 +929,11 @@ t.FocusLost:Connect(function()
     elseif t.Text:lower() == "thirdp" then
 	game.Players.LocalPlayer.CameraMode = Enum.CameraMode.Classic
     elseif t.Text:lower():sub(1, 3) == "fov" then
-        workspace.CurrentCamera.FieldOfView = tonumber(text:sub(4)) or workspace.CurrentCamera.FieldOfView
+        workspace.CurrentCamera.FieldOfView = tonumber(t.Text:sub(4)) or workspace.CurrentCamera.FieldOfView
     elseif t.Text:lower():sub(1, 7) == "maxzoom" then
-        game.Players.LocalPlayer.CameraMaxZoomDistance = tonumber(text:sub(8)) or game.Players.LocalPlayer.CameraMaxZoomDistance
+        game.Players.LocalPlayer.CameraMaxZoomDistance = tonumber(t.Text:sub(8)) or game.Players.LocalPlayer.CameraMaxZoomDistance
     elseif t.Text:lower():sub(1, 7) == "minzoom" then
-        game.Players.LocalPlayer.CameraMinZoomDistance = tonumber(text:sub(8)) or game.Players.LocalPlayer.CameraMinZoomDistance
+        game.Players.LocalPlayer.CameraMinZoomDistance = tonumber(t.Text:sub(8)) or game.Players.LocalPlayer.CameraMinZoomDistance
     end
     t.Text = ""
     wait(4.9)
