@@ -924,6 +924,16 @@ t.FocusLost:Connect(function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/ThatOneGirl-Executor/refs/heads/main/SourceCode"))()
     elseif t.Text:lower() == "jerk" then
         loadstring(game:HttpGet("https://pastefy.app/wa3v2Vgm/raw"))()
+    elseif t.Text:lower() == "firstp" then
+	game.Players.LocalPlayer.CameraMode = Enum.CameraMode.LockFirstPerson
+    elseif t.Text:lower() == "thirdp" then
+	game.Players.LocalPlayer.CameraMode = Enum.CameraMode.Classic
+    elseif t.Text:lower():sub(1,3) == "fov" then
+        workspace.CurrentCamera.FieldOfView = tonumber(textBox.Text:sub(4)) or workspace.CurrentCamera.FieldOfView
+    elseif t.Text:lower():sub(1,7) == "maxzoom" then
+        game.Players.LocalPlayer.CameraMaxZoomDistance = tonumber(t:sub(8)) or game.Players.LocalPlayer.CameraMaxZoomDistance
+    elseif t.Text:lower():sub(1,7) == "minzoom" then
+        game.Players.LocalPlayer.CameraMinZoomDistance = tonumber(t:sub(8)) or game.Players.LocalPlayer.CameraMinZoomDistance
     end
     t.Text = ""
     wait(4.9)
