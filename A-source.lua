@@ -2,6 +2,7 @@
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Heart-Admin/refs/heads/main/A-source.lua"))()
 local loaded = false
 local k = Instance.new("ScreenGui")
+k.IgnoreGuiInset=true
 k.Parent = game.CoreGui
 local black = Instance.new("Frame")
 black.Parent = k
@@ -123,15 +124,16 @@ sfscl.TextColor3 = Color3.fromRGB(255, 0, 128)
 sfscl.Text = [[
 =HEART ADMIN
 menu/m(G)
-change theme
+changetheme
 chill
-info(G)(WIP)
+visuals/vhub(G)(LS)(WIP)
 gamehub/gh(LS)(G)
 close
 restart(LS)
 
 =BASIC
 fly(G)(LS)
+hdfly(G)(LS)
 noclip
 unnoclip
 view
@@ -159,23 +161,41 @@ unblacksc
 whitesc(C)
 unwhitesc
 
-=developer tools
-dex/explorer(LS)(G)
-rspy/remotespy(LS)(G)
-f3x(LS)
-btools(LS)
-
 =body
 noleg(C)(WIP)
 nohead/headless(C)(WIP)
 korblox(C)(WIP)
 creeper(C)(WIP)
 dissapear(C)(CC)(WIP)
+
+=some scripts
+-admins
+reviz/revizadmin
+ak/akadmin
+iy/infiniteyield
+na/namelessadmin
+cmdad/cmdadmin
+
+-developer tools
+dex/explorer(LS)(G)
+rspy/remotespy(LS)(G)
+f3x(LS)
+btools(LS)
+
+-executors
+exec/executor(by owner)
+synx/synapsex
+krnl
+
+-other scripts
+keyboard
+keyboard2
+afem/r15emotes
 ]]
 -- menu
 local menu = Instance.new("Frame", k)
 menu.Size = UDim2.new(0,300,0,400)
-menu.Position = UDim2.new(0.5,0,0)
+menu.Position = UDim2.new(0.5,0,0.05)
 menu.Active = true
 menu.AnchorPoint = Vector2.new(0.5, 0)
 menu.Draggable = true
@@ -198,9 +218,9 @@ pb1.Parent = main
 pb1.Size = UDim2.new(1, 0, 0.2, 0)
 pb1.BackgroundColor3 = Color3.new(0.95,0.95,0.95)
 pb1.Text = " About"
-pb1.Font = Enum.Font.SourceSans
-pb1.TextScaled = true
-pb1.TextColor3 = Color3.new(0, 0, 0)
+pb1.Font = Enum.Font.Ubuntu
+pb1.TextSize=60
+pb1.TextColor3 = Color3.new(0.3, 0.3, 0.3)
 pb1.BorderSizePixel = 0
 pb1.TextXAlignment = Enum.TextXAlignment.Left
 local pb2 = Instance.new("TextButton")
@@ -210,9 +230,9 @@ pb2.Position = UDim2.new(0,0,0.2)
 pb2.BackgroundColor3 = Color3.new(1,1,1)
 pb2.BorderSizePixel = 0
 pb2.Text = " Commands"
-pb2.TextScaled = true
+pb2.TextSize=pb1.TextSize
 pb2.Font = pb1.Font
-pb2.TextColor3 = Color3.new(0,0,0)
+pb2.TextColor3 = Color3.new(0.3, 0.3, 0.3)
 pb2.TextXAlignment = Enum.TextXAlignment.Left
 local pb3 = Instance.new("TextButton")
 pb3.Parent = main
@@ -221,9 +241,9 @@ pb3.Position = UDim2.new(0,0,0.4)
 pb3.BackgroundColor3 = pb1.BackgroundColor3
 pb3.BorderSizePixel = 0
 pb3.Text = " Panels"
-pb3.TextScaled = true
+pb3.TextSize=pb1.TextSize
 pb3.Font = pb1.Font
-pb3.TextColor3 = Color3.new(0,0,0)
+pb3.TextColor3 = Color3.new(0.3, 0.3, 0.3)
 pb3.TextXAlignment = Enum.TextXAlignment.Left
 local pb4 = Instance.new("TextButton")
 pb4.Parent = main
@@ -231,9 +251,9 @@ pb4.Size = pb1.Size
 pb4.Position = UDim2.new(0, 0, 0.6, 0)
 pb4.BackgroundColor3 = Color3.new(1,1,1)
 pb4.Text = " Settings"
-pb4.TextColor3 = Color3.new(0, 0, 0)
+pb4.TextColor3 = Color3.new(0.3, 0.3, 0.3)
 pb4.Font = pb1.Font
-pb4.TextScaled = true
+pb4.TextSize=pb1.TextSize
 pb4.BorderSizePixel = 0
 pb4.TextXAlignment = Enum.TextXAlignment.Left
 local p1 = Instance.new("Frame")
@@ -363,7 +383,7 @@ cmds.Position = UDim2.new(0.05, 0, 0, 0)
 cmds.BackgroundTransparency = 1
 cmds.TextColor3 = Color3.fromRGB(255, 0, 128)
 cmds.TextScaled = true
-cmds.Font = Enum.Font.SourceSans
+cmds.Font = Enum.Font.Ubuntu
 cmds.Text = sfscl.Text
 cmds.TextXAlignment = Enum.TextXAlignment.Left
 cmds.TextYAlignment = Enum.TextYAlignment.Top
@@ -503,11 +523,13 @@ local lowing = tw:Create(menu,back,{Size = UDim2.new(0, 175, 0, 250)})
 local upping = tw:Create(menu,back,{Size = UDim2.new(0, 300, 0, 400)})
 sbb1.MouseButton1Click:Connect(function()
 	if sbb1.Text == "SMALL UI" then
- 	   lowing:Play()
+ 	    lowing:Play()
 		sbb1.Text = "BIG UI"
+		pb1.TextScaled=true;pb2.TextScaled=true;pb3.TextScaled=true;pb4.TextScaled=true
 	  else
 		sbb1.Text = "SMALL UI"
 		upping:Play()
+		pb1.TextScaled=false;pb2.TextScaled=false;pb3.TextScaled=false;pb4.TextScaled=false
 	end
 end)
 local sbc = Instance.new("UICorner",sbb1)
@@ -882,7 +904,7 @@ t.FocusLost:Connect(function()
     elseif t.Text:lower() == "unview" then
         game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
 
-    elseif t.Text:lower() == "noclip" then
+    elseif t.Text:lower():find("noclip") then
         local player = game.Players.LocalPlayer
         local char = player.Character
         local runService = game:GetService("RunService")
@@ -934,6 +956,14 @@ t.FocusLost:Connect(function()
         game.Players.LocalPlayer.CameraMaxZoomDistance = tonumber(t.Text:sub(8)) or game.Players.LocalPlayer.CameraMaxZoomDistance
     elseif t.Text:lower():sub(1, 7) == "minzoom" then
         game.Players.LocalPlayer.CameraMinZoomDistance = tonumber(t.Text:sub(8)) or game.Players.LocalPlayer.CameraMinZoomDistance
+	elseif t.Text:lower()=="na" or t.Text:lower()=="namelessadmin" then
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua"))()
+	elseif t.Text:lower()=="cmdad"or t.Text:lower()=="cmdadmin" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/lxte/cmd/main/main.lua"))()
+	elseif t.Text:lower()=="ak"or t.Text:lower()=="akadmin" then
+		loadstring(game:HttpGet("https://angelical.me/ak.lua"))()
+	elseif t.Text:lower()=="reviz" or t.Text:lower()=="revizadmin" then
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/Reviz%20AdminV2"))()
     end
     t.Text = ""
     wait(4.9)
@@ -1146,7 +1176,7 @@ if not isfile("hadarkwhite.txt") and not isfile("hadarkred.txt") then
 		sb:Destroy()
 		sb2:Destroy()
 		b.Visible = true
-		notify("HI,CMDS FOR COMMANDS:)")
+		notify("hi,cmds for commands!")
 		local currentTime = os.date("*t")
 		local hour = currentTime.hour
 		if hour >= 2 and hour < 5 then
